@@ -125,8 +125,11 @@ class _SignInTourGuideState extends State<SignInTourGuide> {
                 minWidth: MediaQuery.of(context).size.width,
                 height: 54,
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => CustomBottomBartourguide()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const CustomBottomBartourguide()));
                 },
                 shape: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),
