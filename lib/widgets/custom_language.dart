@@ -12,7 +12,7 @@ class _DropdownTextFieldState extends State<DropdownTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 339, 
+      width: 339,
       height: 59,
       decoration: BoxDecoration(
         border: Border.all(color: Color(0XFFD8D8D8)),
@@ -21,20 +21,27 @@ class _DropdownTextFieldState extends State<DropdownTextField> {
       padding: EdgeInsets.symmetric(horizontal: 12.0),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
+          dropdownColor: Theme.of(context).primaryColorLight, 
           value: _selectedItem,
-          hint: Text('Add Language',style: TextStyle(color: Color(0XFFD8D8D8)),), 
+          hint: Text(
+            'Add Language',
+            style: TextStyle(color: Color(0XFFD8D8D8)),
+          ),
           isExpanded: true,
           icon: Icon(Icons.arrow_drop_down),
           iconSize: 24,
-          elevation: 16,
-          style: TextStyle(color: Colors.black),
-          onChanged: (String? newValue){setState(() {
-            _selectedItem = newValue!;
-          });},
+          style: TextStyle(color: Theme.of(context).primaryColor),
+          onChanged: (String? newValue) {
+            setState(() {
+              _selectedItem = newValue!;
+            });
+          },
           items: _dropdownItems.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
-              child: Text(value),
+              child: Container( 
+                child: Text(value),
+              ),
             );
           }).toList(),
         ),
