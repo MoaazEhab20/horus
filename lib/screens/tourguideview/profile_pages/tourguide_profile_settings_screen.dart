@@ -29,7 +29,7 @@ class _PickImageState extends State<TourguideProfileSettingsScreen> {
             },
             icon: Icon(
               Icons.arrow_circle_left_outlined,
-              color: Color(0xff253544),
+              color: Theme.of(context).primaryColor,
               size: 32,
             ),
           ),
@@ -73,11 +73,11 @@ class _PickImageState extends State<TourguideProfileSettingsScreen> {
               const SizedBox(
                 height: 24,
               ),
-              const Text(
+              Text(
                 'Name',
                 style: TextStyle(
                     fontFamily: 'Inter',
-                    color: Color(0xff253544),
+                    color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.w500,
                     fontSize: 15),
               ),
@@ -125,11 +125,11 @@ class _PickImageState extends State<TourguideProfileSettingsScreen> {
               const SizedBox(
                 height: 27,
               ),
-              const Text(
+              Text(
                 'Password',
                 style: TextStyle(
                     fontFamily: 'Inter',
-                    color: Color(0xff253544),
+                    color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.w500,
                     fontSize: 15),
               ),
@@ -154,11 +154,11 @@ class _PickImageState extends State<TourguideProfileSettingsScreen> {
               const SizedBox(
                 height: 9,
               ),
-              const Text(
+              Text(
                 'Confirm Password',
                 style: TextStyle(
                     fontFamily: 'Inter',
-                    color: Color(0xff253544),
+                    color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.w500,
                     fontSize: 15),
               ),
@@ -206,11 +206,11 @@ class _PickImageState extends State<TourguideProfileSettingsScreen> {
               const SizedBox(
                 height: 9,
               ),
-              const Text(
+              Text(
                 'Add Language',
                 style: TextStyle(
                     fontFamily: 'Inter',
-                    color: Color(0xff253544),
+                    color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.w500,
                     fontSize: 15),
               ),

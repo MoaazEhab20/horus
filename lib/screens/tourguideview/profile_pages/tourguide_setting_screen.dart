@@ -29,7 +29,7 @@ class _SettingState extends State<TourguideSettingScreen> {
             },
             icon: Icon(
               Icons.arrow_circle_left_outlined,
-              color: Color(0xff253544),
+              color: Theme.of(context).primaryColor,
               size: 32,
             ),
           ),
@@ -52,7 +52,7 @@ class _SettingState extends State<TourguideSettingScreen> {
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xff253544),
+                      color: Theme.of(context).primaryColor,
                       fontFamily: 'Inter'),
                 ),
                 const SizedBox(
@@ -71,7 +71,7 @@ class _SettingState extends State<TourguideSettingScreen> {
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xff253544),
+                      color: Theme.of(context).primaryColor,
                       fontFamily: 'Inter'),
                 ),
                 const SizedBox(
@@ -80,10 +80,9 @@ class _SettingState extends State<TourguideSettingScreen> {
                 Container(
                   //width: 34,
                   //height: 32,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
+                  decoration: BoxDecoration(),
                   child: DropdownButton(
+                    dropdownColor: Colors.transparent,
                     items: _items.map((String item) {
                       return DropdownMenuItem(value: item, child: Text(item));
                     }).toList(),
@@ -98,7 +97,7 @@ class _SettingState extends State<TourguideSettingScreen> {
                     iconSize: 24,
                     style: TextStyle(
                       fontSize: 20,
-                      color: Color(0xff253544),
+                      color: Theme.of(context).primaryColor,
                       fontFamily: 'Inter',
                     ),
                   ),

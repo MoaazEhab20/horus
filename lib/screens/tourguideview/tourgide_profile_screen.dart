@@ -35,18 +35,18 @@ class TourguideProfileScreen extends StatelessWidget {
                   height: 56,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xffF5F5F5),
+                      backgroundColor: Theme.of(context).primaryColorLight,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
                       elevation: 0.0,
-                      shadowColor: Colors.white,
+                      shadowColor: Theme.of(context).primaryColorLight,
                     ),
                     onPressed: () {
                       Navigator.of(context)
                           .pushNamed('TourguideProfileSettingScreen');
                     },
-                    child: const Row(
+                    child: Row(
                       children: [
                         Icon(
                           Icons.person_outlined,
@@ -58,16 +58,17 @@ class TourguideProfileScreen extends StatelessWidget {
                         Text(
                           'Profile Setting',
                           style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff253544)),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                         Spacer(
                           flex: 5,
                         ),
                         Icon(
                           Icons.arrow_forward_ios_sharp,
-                          color: Color(0xff253544),
+                          color: Theme.of(context).primaryColor,
                         ),
                       ],
                     ),
@@ -83,7 +84,7 @@ class TourguideProfileScreen extends StatelessWidget {
                     height: 56,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffF5F5F5),
+                        backgroundColor: Theme.of(context).primaryColorLight,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -94,7 +95,7 @@ class TourguideProfileScreen extends StatelessWidget {
                         Navigator.of(context)
                             .pushNamed('TourguideSettingScreen');
                       },
-                      child: const Row(
+                      child: Row(
                         children: [
                           Icon(
                             Icons.settings_outlined,
@@ -106,16 +107,17 @@ class TourguideProfileScreen extends StatelessWidget {
                           Text(
                             'Settings',
                             style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xff253544)),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).primaryColor,
+                            ),
                           ),
                           Spacer(
                             flex: 5,
                           ),
                           Icon(
                             Icons.arrow_forward_ios_sharp,
-                            color: Color(0xff253544),
+                            color: Theme.of(context).primaryColor,
                           ),
                         ],
                       ),
@@ -132,7 +134,7 @@ class TourguideProfileScreen extends StatelessWidget {
                     height: 56,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffF5F5F5),
+                        backgroundColor: Theme.of(context).primaryColorLight,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -142,7 +144,7 @@ class TourguideProfileScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).pushNamed('TourguideAboutScreen');
                       },
-                      child: const Row(
+                      child: Row(
                         children: [
                           Icon(
                             Icons.assignment_late_outlined,
@@ -154,16 +156,17 @@ class TourguideProfileScreen extends StatelessWidget {
                           Text(
                             'About',
                             style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xff253544)),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).primaryColor,
+                            ),
                           ),
                           Spacer(
                             flex: 5,
                           ),
                           Icon(
                             Icons.arrow_forward_ios_sharp,
-                            color: Color(0xff253544),
+                            color: Theme.of(context).primaryColor,
                           ),
                         ],
                       ),
@@ -193,13 +196,14 @@ class TourguideProfileScreen extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              backgroundColor: Color(0xffD9D9D9),
+                              backgroundColor:
+                                  Theme.of(context).primaryColorLight,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(17)),
                               content: Text(
                                 'Log out of your account?',
                                 style: TextStyle(
-                                    color: Color(0xff253544),
+                                    color: Theme.of(context).primaryColor,
                                     fontFamily: "Inter",
                                     fontSize: 19,
                                     fontWeight: FontWeight.w600),

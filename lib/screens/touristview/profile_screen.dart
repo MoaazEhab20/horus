@@ -192,13 +192,14 @@ class ProfileScreen extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              backgroundColor: Color(0xffD9D9D9),
+                              backgroundColor:
+                                  Theme.of(context).primaryColorLight,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(17)),
                               content: Text(
                                 'Log out of your account?',
                                 style: TextStyle(
-                                    color: Color(0xff253544),
+                                    color: Theme.of(context).primaryColor,
                                     fontFamily: "Inter",
                                     fontSize: 19,
                                     fontWeight: FontWeight.w600),
