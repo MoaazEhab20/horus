@@ -30,10 +30,21 @@ class _CustomBottomBarState extends State<CustomBottomBartourguide> {
                   Theme.of(context).bottomNavigationBarTheme),
           child: BottomNavigationBar(
             items: [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-              BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'chat'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person_rounded), label: 'profile'),
+                backgroundColor: Colors.transparent,
+                icon: Icon(Icons.home),
+                label: 'home',
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Colors.transparent,
+                icon: Icon(Icons.chat),
+                label: 'chat',
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Colors.transparent,
+                icon: Icon(Icons.person_rounded),
+                label: 'profile',
+              ),
             ],
             currentIndex: _currentIndex,
             onTap: _changeItem,

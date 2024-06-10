@@ -15,7 +15,7 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Row(
+        title: Row(
           children: [
             Padding(
               padding: EdgeInsets.only(right: 15, left: 15),
@@ -40,7 +40,7 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
                 Text(
                   'Moaaz Ehab',
                   style: TextStyle(
-                      color: Color(0xff253544),
+                      color: Theme.of(context).primaryColor,
                       fontSize: 20,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500),
@@ -50,7 +50,7 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
           ],
         ),
         toolbarHeight: 60,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: Padding(
@@ -88,7 +88,7 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(25),
                                 bottomRight: Radius.circular(25))),
-                        child: const Column(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
@@ -99,7 +99,7 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
                                       left: 8, right: 4, top: 4),
                                   child: Icon(
                                     Icons.location_on_sharp,
-                                    color: Colors.white,
+                                    color: Theme.of(context).primaryColorLight,
                                     size: 22,
                                   ),
                                 ),
@@ -108,7 +108,8 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,
                                   style: TextStyle(
-                                      color: Colors.white,
+                                      color:
+                                          Theme.of(context).primaryColorLight,
                                       fontSize: 18,
                                       fontFamily: 'Inter',
                                       fontWeight: FontWeight.w500),
@@ -120,7 +121,7 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
                               child: Text(
                                 'Current City',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: Theme.of(context).primaryColorLight,
                                     fontSize: 16,
                                     fontFamily: 'Inter',
                                     fontWeight: FontWeight.w500),
@@ -131,12 +132,12 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
                       ),
                     ),
                   ]),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(
                       'Requests ',
                       style: TextStyle(
-                          color: Color(0xff253544),
+                          color: Theme.of(context).primaryColor,
                           fontSize: 16,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w500),

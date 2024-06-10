@@ -18,7 +18,7 @@ class CustomRequestCard extends StatelessWidget {
               height: 200,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(27),
-                color: const Color(0xffF6F5FB),
+                color: Theme.of(context).primaryColorLight,
               ),
             ),
             Positioned(
@@ -41,7 +41,7 @@ class CustomRequestCard extends StatelessWidget {
                     )),
               ),
             ),
-            const Positioned(
+            Positioned(
               left: 113,
               top: 13,
               right: 13,
@@ -53,7 +53,7 @@ class CustomRequestCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        color: Color(0xff253544),
+                        color: Theme.of(context).primaryColor,
                         fontSize: 20,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w600),
@@ -67,7 +67,7 @@ class CustomRequestCard extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              color: Color(0xff253544),
+                              color: Theme.of(context).primaryColor,
                               fontSize: 19,
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w600),
@@ -77,7 +77,7 @@ class CustomRequestCard extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              color: Color(0xff253544),
+                              color: Theme.of(context).primaryColor,
                               fontSize: 19,
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w600),
@@ -92,7 +92,7 @@ class CustomRequestCard extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            color: Color(0xff253544),
+                            color: Theme.of(context).primaryColor,
                             fontSize: 19,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600),
@@ -102,7 +102,7 @@ class CustomRequestCard extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            color: Color(0xff253544),
+                            color: Theme.of(context).primaryColor,
                             fontSize: 19,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600),
@@ -134,7 +134,7 @@ class CustomRequestCard extends StatelessWidget {
                 children: [
                   MaterialButton(
                     onPressed: () {},
-                    color: Colors.white,
+                    color: Theme.of(context).primaryColorLight,
                     minWidth: MediaQuery.of(context).size.width * 0.35,
                     height: 45,
                     elevation: 0.5,
@@ -156,7 +156,7 @@ class CustomRequestCard extends StatelessWidget {
                   ),
                   MaterialButton(
                     onPressed: () {},
-                    color: Colors.white,
+                    color: Theme.of(context).primaryColorLight,
                     minWidth: MediaQuery.of(context).size.width * 0.35,
                     height: 45,
                     elevation: 0.5,

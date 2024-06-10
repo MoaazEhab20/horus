@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../components/custom_text.dart';
+
 class TourguideAboutScreen extends StatelessWidget {
   const TourguideAboutScreen({super.key});
 
@@ -17,7 +19,7 @@ class TourguideAboutScreen extends StatelessWidget {
             },
             icon: Icon(
               Icons.arrow_circle_left_outlined,
-              color: Color(0xff253544),
+              color: Theme.of(context).primaryColor,
               size: 32,
             ),
           ),
@@ -99,17 +101,10 @@ class TourguideAboutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const Center(
+            Center(
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
-                child: Text(
-                  'Supervised By',
-                  style: TextStyle(
-                      color: Color(0xff253544),
-                      fontFamily: "Inter",
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600),
-                ),
+                child: TextForTitleL(data: 'Supervised By'),
               ),
             ),
             Container(
@@ -159,17 +154,10 @@ class TourguideAboutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const Center(
+            Center(
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
-                child: Text(
-                  'Developed By',
-                  style: TextStyle(
-                      color: Color(0xff253544),
-                      fontFamily: "Inter",
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600),
-                ),
+                child: TextForTitleL(data: 'Developed By'),
               ),
             ),
             Container(
@@ -373,11 +361,11 @@ class TourguideAboutScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Center(
+            Center(
               child: Text(
                 ' © 2024 Hours . all rights reserved.',
                 style: TextStyle(
-                    color: Color(0xff253544),
+                    color: Theme.of(context).primaryColor,
                     fontFamily: "Inter",
                     fontSize: 13,
                     fontWeight: FontWeight.w600),
