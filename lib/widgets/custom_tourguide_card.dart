@@ -1,3 +1,4 @@
+import 'package:final_project/screens/touristview/details_tourguide.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -9,7 +10,9 @@ class CustomTourguideCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context,MaterialPageRoute(builder: (context) => const detailsTourguide()));
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12),
         child: Stack(
