@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../screens/touristview/details_screen.dart';
+
 class CustomHotelsCard extends StatelessWidget {
   const CustomHotelsCard({
     super.key,
@@ -9,7 +11,10 @@ class CustomHotelsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+            Navigator.push(context,MaterialPageRoute(builder: (context) => const detailsScreen()));
+
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12),
         child: Stack(
