@@ -1,8 +1,8 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:flutter/material.dart';
 
-class PyramidDetails extends StatelessWidget {
-  const PyramidDetails({super.key});
+class detailsScreen extends StatelessWidget {
+  const detailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -173,7 +173,9 @@ class Carousel extends StatelessWidget {
                             Icons.arrow_back,
                             color: Color(0xffF5903F),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                         )),
                     Positioned(
                         top: size.height * 0.01,
@@ -211,7 +213,9 @@ class Carousel extends StatelessWidget {
                             Icons.arrow_back,
                             color: Color(0xffF5903F),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                         )),
                     Positioned(
                         top: size.height * 0.01,
@@ -249,7 +253,9 @@ class Carousel extends StatelessWidget {
                             Icons.arrow_back,
                             color: Color(0xffF5903F),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                         )),
                     Positioned(
                         top: size.height * 0.01,
