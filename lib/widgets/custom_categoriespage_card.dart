@@ -10,7 +10,7 @@ class CustomCategoriesPageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,MaterialPageRoute(builder: (context) => const detailsScreen()));
+        Navigator.push(context,MaterialPageRoute(builder: (context) => detailsScreen()));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12),
