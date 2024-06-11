@@ -1,3 +1,4 @@
+import 'package:final_project/screens/touristview/details_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomRecommendCard extends StatelessWidget {
@@ -8,7 +9,9 @@ class CustomRecommendCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context,MaterialPageRoute(builder: (context) => const detailsScreen()));
+      },
       child: Padding(
         padding: const EdgeInsets.only(right: 16),
         child: Stack(children: [
