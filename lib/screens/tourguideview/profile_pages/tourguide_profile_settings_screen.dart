@@ -151,30 +151,11 @@ class _PickImageState extends State<TourguideProfileSettingsScreen> {
               Container(
                 child: DropdownTextField(),
               ),
-              /* TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Add Language',
-                    hintStyle: const TextStyle(color: Color(0XFFD8D8D8)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        borderSide: const BorderSide(
-                          width: 1,
-                          color: Color(0XFFF5903F),
-                        )),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        borderSide: const BorderSide(
-                          width: 1,
-                          color: Color(0XFFD8D8D8),
-                        )),
-                  ),
-                ),*/
               const SizedBox(
                 height: 60,
               ),
               Center(
                 child: MaterialButton(
-                  //minWidth: MediaQuery.of(context).size.width,
                   height: 42,
                   minWidth: 233,
                   onPressed: () {},

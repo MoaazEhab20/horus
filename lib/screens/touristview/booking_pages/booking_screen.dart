@@ -17,20 +17,20 @@ class _bookingTourguideState extends State<bookingTourguide> {
   TextEditingController date = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-      Future<void> _selectDate() async {
-      DateTime? _picked = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now().add(Duration(days: 2)),
-        firstDate: DateTime.now().add(Duration(days: 2)),
-        lastDate : DateTime(2025)
-      );
+  Future<void> _selectDate() async {
+    DateTime? _picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now().add(Duration(days: 2)),
+      firstDate: DateTime.now().add(Duration(days: 2)),
+      lastDate: DateTime(2025),
+    );
 
-      if (_picked != null) {
-        setState(() {
-          date.text = _picked.toString().split(" ")[0];
-        });
-      }
+    if (_picked != null) {
+      setState(() {
+        date.text = _picked.toString().split(" ")[0];
+      });
     }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +53,8 @@ class _bookingTourguideState extends State<bookingTourguide> {
         ),
         title: TextForTitleL(data: 'Time'),
       ),
-      body:  Padding(
-        padding: const EdgeInsets.symmetric(horizontal:24.0),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Form(
           key: formKey,
           child: Column(
@@ -64,20 +64,31 @@ class _bookingTourguideState extends State<bookingTourguide> {
                 textAlign: TextAlign.center,
                 controller: date,
                 validator: (data) {
-                  final inputDate = DateFormat('yyyy-MM-dd').parse(data.toString());
-                  List<String> days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-                  if (data!.isEmpty) {
+                  if (data == null || data.isEmpty) {
                     return '*Please fill this field';
-                  } else if (inputDate.isBefore(DateTime.now())) {
-                    return 'Date error, Try another date';
-                  } else {
-                    return days[inputDate.weekday - 1];
                   }
+
+                  final DateTime inputDate;
+                  try {
+                    inputDate = DateFormat('yyyy-MM-dd').parse(data);
+                  } catch (e) {
+                    return '*Invalid date format';
+                  }
+
+                  if (inputDate.isBefore(DateTime.now())) {
+                    return 'Date error, Try another date';
+                  }
+
+                  return null;
                 },
                 decoration: InputDecoration(
-                  labelText: 'Date',labelStyle: TextStyle(color: Theme.of(context).primaryColor),
-                  hintText: 'YYYY-MM-DD',hintStyle: TextStyle(color: Colors.grey,fontSize: 16),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(16),),
+                  labelText: 'Date',
+                  labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+                  hintText: 'YYYY-MM-DD',
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                     borderSide: BorderSide(
@@ -86,9 +97,9 @@ class _bookingTourguideState extends State<bookingTourguide> {
                   ),
                 ),
                 readOnly: true,
-                onTap: (){
+                onTap: () {
                   _selectDate();
-                }
+                },
               ),
               SizedBox(height: 16.0),
               TextFormField(
@@ -96,28 +107,34 @@ class _bookingTourguideState extends State<bookingTourguide> {
                 textAlign: TextAlign.center,
                 controller: fromTime,
                 validator: (data) {
-                  final format = DateFormat('HH:mm');
-                  DateTime? inputTime;
+                  if (data == null || data.isEmpty) {
+                    return '*Please fill this field';
+                  }
+
+                  final DateTime inputTime;
                   try {
-                  inputTime = format.parse(data.toString());
+                    inputTime = DateFormat('HH:mm').parse(data);
                   } catch (e) {
                     return '*Invalid time format';
-                    }
-                  final startTime = format.parse('09:00');
-                  final endTime = format.parse('20:00');
+                  }
 
-                  if (data!.isEmpty) {
-                    return '*Please fill this field';
-                  } else if (inputTime.isBefore(startTime) || inputTime.isAfter(endTime)) {
+                  final DateTime startTime = DateFormat('HH:mm').parse('09:00');
+                  final DateTime endTime = DateFormat('HH:mm').parse('20:00');
+
+                  if (inputTime.isBefore(startTime) || inputTime.isAfter(endTime)) {
                     return '*Time must be between 09:00 and 20:00';
-                    } else {
-                      return null;
-                    }
+                  }
+
+                  return null;
                 },
                 decoration: InputDecoration(
-                  labelText: 'From',labelStyle: TextStyle(color: Theme.of(context).primaryColor),
-                  hintText: 'HH:MM',hintStyle: TextStyle(color: Colors.grey,fontSize: 16),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(16),),
+                  labelText: 'From',
+                  labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+                  hintText: 'HH:MM',
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                     borderSide: BorderSide(
@@ -132,34 +149,40 @@ class _bookingTourguideState extends State<bookingTourguide> {
                 textAlign: TextAlign.center,
                 controller: toTime,
                 validator: (data) {
-                  final format = DateFormat('HH:mm');
-                  DateTime? toInputTime;
-                  DateTime? fromInputTime;
+                  if (data == null || data.isEmpty) {
+                    return '*Please fill this field';
+                  }
+
+                  final DateTime toInputTime;
+                  final DateTime fromInputTime;
                   try {
-                  toInputTime = format.parse(data.toString());
-                  fromInputTime = format.parse(fromTime.text.toString());
+                    toInputTime = DateFormat('HH:mm').parse(data);
+                    fromInputTime = DateFormat('HH:mm').parse(fromTime.text);
                   } catch (e) {
                     return '*Invalid time format';
-                    }
-                  final startTime = format.parse('10:00');
-                  final endTime = format.parse('21:00');
+                  }
 
-                  if (data!.isEmpty) {
-                    return '*Please fill this field';
-                  } else if (toInputTime.isBefore(startTime) || toInputTime.isAfter(endTime)) {
+                  final DateTime startTime = DateFormat('HH:mm').parse('10:00');
+                  final DateTime endTime = DateFormat('HH:mm').parse('21:00');
+
+                  if (toInputTime.isBefore(startTime) || toInputTime.isAfter(endTime)) {
                     return '*Time must be between 10:00 and 21:00';
                   } else if (toInputTime.isBefore(fromInputTime)) {
                     return '*Timing error, try another time';
                   } else if (toInputTime.difference(fromInputTime).inMinutes < 60) {
                     return '*Your time is less than one hour, try another time';
-                  } else {
-                      return null;
                   }
+
+                  return null;
                 },
                 decoration: InputDecoration(
-                  labelText: 'To',labelStyle: TextStyle(color: Theme.of(context).primaryColor),
-                  hintText: 'HH:MM',hintStyle: TextStyle(color: Colors.grey,fontSize: 16),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(16),),
+                  labelText: 'To',
+                  labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+                  hintText: 'HH:MM',
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                     borderSide: BorderSide(
@@ -174,7 +197,7 @@ class _bookingTourguideState extends State<bookingTourguide> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => const creditCard()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const creditCard()));
                     }
                   },
                   style: ElevatedButton.styleFrom(
