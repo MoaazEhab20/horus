@@ -170,7 +170,7 @@ class _PickImageState extends State<TourguideProfileSettingsScreen> {
                   ),
                 ),*/
               const SizedBox(
-                height: 27,
+                height: 60,
               ),
               Center(
                 child: MaterialButton(
