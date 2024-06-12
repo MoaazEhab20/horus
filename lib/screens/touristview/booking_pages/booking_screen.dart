@@ -14,8 +14,23 @@ class bookingTourguide extends StatefulWidget {
 class _bookingTourguideState extends State<bookingTourguide> {
   TextEditingController fromTime = TextEditingController();
   TextEditingController toTime = TextEditingController();
-  TextEditingController location = TextEditingController();
+  TextEditingController date = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
+      Future<void> _selectDate() async {
+      DateTime? _picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now().add(Duration(days: 2)),
+        firstDate: DateTime.now().add(Duration(days: 2)),
+        lastDate : DateTime(2025)
+      );
+
+      if (_picked != null) {
+        setState(() {
+          date.text = _picked.toString().split(" ")[0];
+        });
+      }
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +61,37 @@ class _bookingTourguideState extends State<bookingTourguide> {
             children: <Widget>[
               Spacer(flex: 1,),
               TextFormField(
+                textAlign: TextAlign.center,
+                controller: date,
+                validator: (data) {
+                  final inputDate = DateFormat('yyyy-MM-dd').parse(data.toString());
+                  List<String> days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+                  if (data!.isEmpty) {
+                    return '*Please fill this field';
+                  } else if (inputDate.isBefore(DateTime.now())) {
+                    return 'Date error, Try another date';
+                  } else {
+                    return days[inputDate.weekday - 1];
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Date',labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+                  hintText: 'YYYY-MM-DD',hintStyle: TextStyle(color: Colors.grey,fontSize: 16),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(16),),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                    borderSide: BorderSide(
+                      color: Color(0xffF5903F),
+                    ),
+                  ),
+                ),
+                readOnly: true,
+                onTap: (){
+                  _selectDate();
+                }
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
                 keyboardType: TextInputType.datetime,
                 textAlign: TextAlign.center,
                 controller: fromTime,
@@ -70,7 +116,7 @@ class _bookingTourguideState extends State<bookingTourguide> {
                 },
                 decoration: InputDecoration(
                   labelText: 'From',labelStyle: TextStyle(color: Theme.of(context).primaryColor),
-                  hintText: 'TT',hintStyle: TextStyle(color: Colors.grey,fontSize: 16),
+                  hintText: 'HH:MM',hintStyle: TextStyle(color: Colors.grey,fontSize: 16),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(16),),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
@@ -104,7 +150,7 @@ class _bookingTourguideState extends State<bookingTourguide> {
                     return '*Time must be between 10:00 and 21:00';
                   } else if (toInputTime.isBefore(fromInputTime)) {
                     return '*Timing error, try another time';
-                  }else if (toInputTime.difference(fromInputTime).inMinutes < 60) {
+                  } else if (toInputTime.difference(fromInputTime).inMinutes < 60) {
                     return '*Your time is less than one hour, try another time';
                   } else {
                       return null;
@@ -112,30 +158,7 @@ class _bookingTourguideState extends State<bookingTourguide> {
                 },
                 decoration: InputDecoration(
                   labelText: 'To',labelStyle: TextStyle(color: Theme.of(context).primaryColor),
-                  hintText: 'TT',hintStyle: TextStyle(color: Colors.grey,fontSize: 16),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(16),),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide(
-                      color: Color(0xffF5903F),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 16.0),
-              TextFormField(
-                textAlign: TextAlign.center,
-                controller: location,
-                validator: (data) {
-                  if (data!.isEmpty) {
-                    return '*Please fill this field';
-                  } else {
-                    return null;
-                  }
-                },
-                decoration: InputDecoration(
-                  labelText: 'Location',labelStyle: TextStyle(color: Theme.of(context).primaryColor),
-                  hintText: 'LL',hintStyle: TextStyle(color: Colors.grey,fontSize: 16),
+                  hintText: 'HH:MM',hintStyle: TextStyle(color: Colors.grey,fontSize: 16),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(16),),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),

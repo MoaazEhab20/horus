@@ -15,8 +15,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
   File? selectedImage;
   bool isEditingName = false;
   bool isEditingPassword = false;
-  bool _isPasswordVisible = false;
-  bool _isConfirmPasswordVisible = false;
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -74,7 +72,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 30),
               Text(
                 'Name',
                 style: TextStyle(
@@ -89,6 +87,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                 enabled: isEditingName,
                 style: TextStyle(color: Theme.of(context).primaryColor),
                 decoration: InputDecoration(
+                  //labelText: 'Name',labelStyle: TextStyle(color: Theme.of(context).primaryColor),
                   hintText: 'User Name',
                   hintStyle: const TextStyle(color: Color(0XFFD8D8D8)),
                   border: OutlineInputBorder(
@@ -131,132 +130,6 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                   color: const Color(0XFFF5903F),
                   child: Text(
                     isEditingName ? 'Done' : 'Edit Name',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 27),
-              Text(
-                'Password',
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15,
-                ),
-              ),
-              TextField(
-                controller: passwordController,
-                enabled: isEditingPassword,
-                obscureText: !_isPasswordVisible,
-                decoration: InputDecoration(
-                  hintText: 'Enter your password',
-                  hintStyle: const TextStyle(color: Color(0XFFD8D8D8)),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: const BorderSide(
-                      width: 1,
-                      color: Color(0XFFF5903F),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: const BorderSide(
-                      width: 1,
-                      color: Color(0XFFF5903F),
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: const BorderSide(
-                      width: 1,
-                      color: Color(0XFFF5903F),
-                    ),
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
-                  ),
-                ),
-              ),
-              const SizedBox(height: 9),
-              Text(
-                'Confirm Password',
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15,
-                ),
-              ),
-              TextField(
-                controller: confirmPasswordController,
-                enabled: isEditingPassword,
-                obscureText: !_isConfirmPasswordVisible,
-                decoration: InputDecoration(
-                  hintText: 'Re-enter your password',
-                  hintStyle: const TextStyle(color: Color(0XFFD8D8D8)),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: const BorderSide(
-                      width: 1,
-                      color: Color(0XFFF5903F),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: const BorderSide(
-                      width: 1,
-                      color: Color(0XFFF5903F),
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: const BorderSide(
-                      width: 1,
-                      color: Color(0XFFF5903F),
-                    ),
-                  ),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-                      });
-                    },
-                  ),
-                ),
-              ),
-              const SizedBox(height: 27),
-              Center(
-                child: MaterialButton(
-                  height: 42,
-                  minWidth: 233,
-                  onPressed: () {
-                    setState(() {
-                      isEditingPassword = !isEditingPassword;
-                    });
-                  },
-                  shape: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                    borderSide: BorderSide.none,
-                  ),
-                  color: const Color(0XFFF5903F),
-                                    child: Text(
-                    isEditingPassword ? 'Save Password' : 'Edit Password',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
