@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'signinview/signIn_tourguide_screen.dart';
-import 'signinview/signIn_tourist_screen.dart';
+import 'authview/signIn_tourguide_screen.dart';
+import 'authview/signIn_tourist_screen.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -29,20 +29,20 @@ class _FirstScreenState extends State<FirstScreen> {
               const Text(
                 'Hours',
                 style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Inter'
-                ),
+                    color: Color(0XFF253544),
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Inter'),
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 20.0),
                 child: Text(
                   'Tourism promotion and an integrated community of tourist guides around Egypt.',
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Inter'
-                  ),
+                      color: Color(0XFF253544),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Inter'),
                 ),
               ),
               const Spacer(
@@ -68,18 +68,21 @@ class _FirstScreenState extends State<FirstScreen> {
                   child: const Text(
                     'Tourist',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontFamily: 'Inter'
-                    ),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontFamily: 'Inter'),
                   ),
                 ),
               ),
               const Center(
                   child: Text(
                 'OR',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,fontFamily: 'Inter'),
+                style: TextStyle(
+                    color: Color(0XFF253544),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Inter'),
               )),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -101,11 +104,10 @@ class _FirstScreenState extends State<FirstScreen> {
                   child: const Text(
                     'Tour Guide',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontFamily: 'Inter'
-                    ),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontFamily: 'Inter'),
                   ),
                 ),
               ),
