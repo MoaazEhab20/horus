@@ -1,37 +1,27 @@
 import 'package:dio/dio.dart';
 
-class ApiService
-{
+class ApiService {
   static late Dio dio;
 
-  static init()
-  {
-    dio=Dio(
+  static init() {
+    dio = Dio(
       BaseOptions(
           baseUrl: 'https://hoorus.online/api/',
-          receiveDataWhenStatusError: true
-      ),
+          receiveDataWhenStatusError: true),
     );
   }
-
-
 
   static Future<Response> getData({
     required String url,
     dynamic query,
     dynamic data,
     String? token,
-  })async
-  {
+  }) async {
     Options options = Options(
       headers: {'Authorization': 'Bearer $token'},
     );
-    return await dio.get(
-      url,
-      queryParameters:query,
-      data: data,
-      options:options
-    );
+    return await dio.get(url,
+        queryParameters: query, data: data, options: options);
   }
 
   static Future<Response> postData({
@@ -41,14 +31,12 @@ class ApiService
     String? token,
   }) async {
     Options options = Options(
-      headers: {'Authorization': 'Bearer $token'},
+      headers: {
+        'Accept': 'Application/json',
+      },
     );
-    return await dio.post(
-      url,
-      data: data,
-      queryParameters: query,
-      options: options
-    );
+    //dio.options.headers = {'Accept': 'application/json'};
+    return await dio.post(url, data: data, queryParameters: query);
   }
 
   static Future<Response> putData({
@@ -60,28 +48,18 @@ class ApiService
     Options options = Options(
       headers: {'Authorization': 'Bearer $token'},
     );
-    return await dio.put(
-        url,
-        data: data,
-        queryParameters: query,
-        options: options
-    );
+    return await dio.put(url,
+        data: data, queryParameters: query, options: options);
   }
-
-
 
   static Future<Response> deleteData({
     required String url,
     dynamic query,
     String? token,
-  })async
-  {
+  }) async {
     Options options = Options(
       headers: {'Authorization': 'Bearer $token'},
     );
-    return await dio.delete(
-        url,
-        queryParameters:query,
-        options:options
-);}
+    return await dio.delete(url, queryParameters: query, options: options);
+  }
 }
