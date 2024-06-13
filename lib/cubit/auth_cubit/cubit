@@ -1,0 +1,45 @@
+import 'package:campuspay/core/utils/api_service.dart';
+import 'package:campuspay/features/sign_up/data/model/signup_model.dart';
+import 'package:campuspay/features/sign_up/data/model/verification_model.dart';
+import 'package:campuspay/features/sign_up/presentation/manage/cubit/signup_states.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../core/utils/components.dart';
+
+class SignUpCubit extends Cubit<SignUpStates>
+{
+  SignUpCubit(): super(SignUpInitialStates());
+  SignUpCubit get(context)=>BlocProvider.of(context);
+
+
+ late SignUpModel signUpModel;
+  void createStudentUser({
+    required String email,
+    required String name,
+    required String ssn,
+    required String password,
+    required String confirmPassword,
+    required context,
+}){
+    emit(SignUpLoadingStates());
+    buildShowLoading(context);
+    ApiService.postData(
+      url: 'Authentcation/StudentSignUp',
+      query: {
+        'Email':email,
+        'FullName':name,
+        'SSN':ssn,
+        'Password':password,
+        'ConfirmPassword':confirmPassword,
+      },
+    ).then((value){
+      signUpModel=SignUpModel.fromJson(value.data);
+      print(signUpModel.massage);
+      emit(SignUpSuccessStates(signUpModel: signUpModel));
+    }).catchError((error){
+      emit(SignUpErrorStates(error.toString()));
+      Navigator.pop(context);
+    });
+  }
+}

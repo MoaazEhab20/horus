@@ -1,4 +1,4 @@
-import 'package:final_project/screens/signinview/signIn_tourguide_screen.dart';
+import 'package:final_project/screens/authview/signIn_tourguide_screen.dart';
 import 'package:flutter/material.dart';
 
 class TourGuideSignUp extends StatefulWidget {
@@ -571,8 +571,7 @@ class _SignUpState extends State<TourGuideSignUp> {
                           gender != '' &&
                           nationality.text.isNotEmpty &&
                           phoneNumber.text.isNotEmpty) {
-                        
-                    /*var user = User(
+                        /*var user = User(
                       name: name.text,
                       email: email.text,
                       password: password.text,
@@ -581,17 +580,18 @@ class _SignUpState extends State<TourGuideSignUp> {
                       phoneNumber: phoneNumber.text,
                     );
 */
-                    //userDataBase.insertUser(user);
+                        //userDataBase.insertUser(user);
 
-                   /* Navigator.of(context).push(
+                        /* Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) {
                           return SignInTourGuide();
                         })
                     );*/
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => const SignInTourGuide()));
-                    
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignInTourGuide()));
                       }
-                      
                     });
                   },
                   minWidth: 450.0,
