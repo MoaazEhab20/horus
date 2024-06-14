@@ -56,9 +56,7 @@ class _SettingState extends State<SettingScreen> {
                       color: Theme.of(context).primaryColor,
                       fontFamily: 'Inter'),
                 ),
-                SizedBox(
-                  width: 150,
-                ),
+                Spacer(flex: 1,),
                 DarkModeSwitch(),
                 /*Switch(
                   activeColor: Colors.white,
@@ -86,9 +84,7 @@ class _SettingState extends State<SettingScreen> {
                       color: Theme.of(context).primaryColor,
                       fontFamily: 'Inter'),
                 ),
-                const SizedBox(
-                  width: 120,
-                ),
+                Spacer(flex: 1,),
                 Container(
                   //width: 34,
                   //height: 32,

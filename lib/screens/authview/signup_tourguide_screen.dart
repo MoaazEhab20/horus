@@ -47,12 +47,27 @@ class _SignUpState extends State<TourGuideSignUp> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.symmetric(horizontal:24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+               const SizedBox(
+                      height: 60,
+                    ),
+              IconButton(
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.all(0),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_circle_left_outlined,
+                          color: Theme.of(context).primaryColor,
+                          size: 34,
+                        )),
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
               const Align(
                 alignment: Alignment.centerLeft,

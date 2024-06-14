@@ -4,6 +4,7 @@ class AppTheme {
   static final lightTheme = ThemeData(
     //for text
     primaryColor: Color(0xff253544),
+    canvasColor: Colors.black,
     //for card and bottom
     primaryColorLight: Color(0xffF5F5F5),
     cardColor: Color(0xffF5F5F5),
@@ -51,6 +52,7 @@ class AppTheme {
 
   static final darkTheme = ThemeData(
     primaryColor: Colors.white,
+    canvasColor: Colors.white,
     primaryColorLight: Color(0xff282C34),
     cardColor: Color(0xff282C34),
     scaffoldBackgroundColor: Color(0xff1F1F1F),

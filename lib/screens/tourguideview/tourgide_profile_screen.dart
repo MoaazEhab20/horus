@@ -7,6 +7,7 @@ class TourguideProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -93,7 +94,7 @@ class TourguideProfileScreen extends StatelessWidget {
                       ),
                       onPressed: () {
                         Navigator.of(context)
-                            .pushNamed('TourguideSettingScreen');
+                            .pushNamed('SettingScreen');
                       },
                       child: Row(
                         children: [
@@ -142,7 +143,7 @@ class TourguideProfileScreen extends StatelessWidget {
                         shadowColor: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed('TourguideAboutScreen');
+                        Navigator.of(context).pushNamed('AboutScreen');
                       },
                       child: Row(
                         children: [
@@ -244,10 +245,10 @@ class TourguideProfileScreen extends StatelessWidget {
                           },
                         );
                       },
-                      child: const Row(
+                      child: Row(
                         children: [
                           SizedBox(
-                            width: 115,
+                            width: size.width*0.30,
                           ),
                           Text(
                             'Log Out',
@@ -258,7 +259,7 @@ class TourguideProfileScreen extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: 100,
+                            width: size.width*0.20,
                           ),
                           Icon(Icons.exit_to_app)
                         ],

@@ -7,6 +7,7 @@ class CustomRequestCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {},
       child: Padding(
@@ -22,11 +23,25 @@ class CustomRequestCard extends StatelessWidget {
               ),
             ),
             Positioned(
+              left:13 ,
+              top: 8,
+              child: Text(
+                      'Moaaz Ehab ',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 19,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w600),
+                    ),
+            ),
+            Positioned(
               left: 13,
-              top: 13,
+              top: 36,
               child: Container(
-                height: 90,
-                width: 90,
+                height: size.height*0.12,
+                width: size.width*0.26,
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(29),
@@ -43,21 +58,11 @@ class CustomRequestCard extends StatelessWidget {
             ),
             Positioned(
               left: 113,
-              top: 13,
+              top: 38,
               right: 13,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Moaaz Ehab ',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 20,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w600),
-                  ),
                   Padding(
                     padding: EdgeInsets.only(top: 8),
                     child: Row(
@@ -67,7 +72,7 @@ class CustomRequestCard extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).canvasColor,
                               fontSize: 19,
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w600),
@@ -78,7 +83,7 @@ class CustomRequestCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
-                              fontSize: 19,
+                              fontSize: 16,
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w600),
                         ),
@@ -88,11 +93,11 @@ class CustomRequestCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'time : ',
+                        'Time : ',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            color: Theme.of(context).primaryColor,
+                            color: Theme.of(context).canvasColor,
                             fontSize: 19,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600),
@@ -103,20 +108,20 @@ class CustomRequestCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                             color: Theme.of(context).primaryColor,
-                            fontSize: 19,
+                            fontSize: 16,
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 8.0),
+                    padding: EdgeInsets.only(top: 8.0,left: 36),
                     child: Text(
-                      'pyramids',
+                      'Pyramids',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          color: Color(0xffF5903F),
+                          color: Theme.of(context).canvasColor,
                           fontSize: 19,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w600),
@@ -135,7 +140,7 @@ class CustomRequestCard extends StatelessWidget {
                   MaterialButton(
                     onPressed: () {},
                     color: Theme.of(context).primaryColorLight,
-                    minWidth: MediaQuery.of(context).size.width * 0.35,
+                    minWidth: size.width * 0.35,
                     height: 45,
                     elevation: 0.5,
                     shape: const RoundedRectangleBorder(
@@ -157,7 +162,7 @@ class CustomRequestCard extends StatelessWidget {
                   MaterialButton(
                     onPressed: () {},
                     color: Theme.of(context).primaryColorLight,
-                    minWidth: MediaQuery.of(context).size.width * 0.35,
+                    minWidth: size.width * 0.35,
                     height: 45,
                     elevation: 0.5,
                     shape: const RoundedRectangleBorder(
