@@ -57,7 +57,7 @@ class CustomRequestCard extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 113,
+              left: 128,
               top: 38,
               right: 13,
               child: Column(

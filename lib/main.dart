@@ -4,7 +4,6 @@ import 'package:final_project/cubit/auth_cubit/states.dart';
 import 'package:final_project/screens/first_screen.dart';
 import 'package:final_project/screens/onboarding_view.dart';
 import 'package:final_project/screens/tourguideview/profile_pages/tourguide_profile_settings_screen.dart';
-import 'package:final_project/screens/tourguideview/profile_pages/tourguide_setting_screen.dart';
 import 'package:final_project/screens/touristview/home_pages/entertainment_screen.dart';
 import 'package:final_project/screens/touristview/home_pages/hotel_screen.dart';
 import 'package:final_project/screens/touristview/home_pages/landmark_screen.dart';
@@ -82,7 +81,6 @@ class MyApp extends HookConsumerWidget {
               'ProfileSettingScreen': (context) => ProfileSettingsScreen(),
               'AboutScreen': (context) => AboutScreen(),
               'TourguideAboutScreen': (context) => TourguideAboutScreen(),
-              'TourguideSettingScreen': (context) => TourguideSettingScreen(),
               'TourguideProfileSettingScreen': (context) =>
                   TourguideProfileSettingsScreen(),
             },
