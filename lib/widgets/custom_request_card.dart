@@ -103,7 +103,7 @@ class CustomRequestCard extends StatelessWidget {
                             fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        '11 am To 5 pm',
+                        '11 am : 5 pm',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(

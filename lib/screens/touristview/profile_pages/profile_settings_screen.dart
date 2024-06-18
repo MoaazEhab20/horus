@@ -67,6 +67,7 @@ class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
                           showImagePickerOption(context);
                         },
                         icon: const Icon(Icons.add_a_photo),
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                   ],
