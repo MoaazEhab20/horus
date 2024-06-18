@@ -38,27 +38,27 @@ class detailsTourguide extends StatelessWidget {
                 SizedBox(height: 40,),
                 Row(
                   children: [
-                    Text('Name :',style: TextStyle(fontSize: 24,fontFamily: 'inter'),),
+                    Text('Name :',style: TextStyle(fontSize: 24,fontFamily: 'inter',fontWeight: FontWeight.bold),),
                     Spacer(flex: 1,),
-                    Text('Mohamed',style: TextStyle(fontSize: 24,fontFamily: 'inter'),),
+                    Text('Mohamed',style: TextStyle(fontSize: 20,fontFamily: 'inter',fontWeight: FontWeight.bold),),
                     Spacer(flex: 2,),
                   ],
                 ),
                 SizedBox(height: 9,),
                 Row(
                   children: [
-                    Text('Languages :',style: TextStyle(fontSize: 24,fontFamily: 'inter'),),
+                    Text('Languages :',style: TextStyle(fontSize: 24,fontFamily: 'inter',fontWeight: FontWeight.bold),),
                     Spacer(flex: 1,),
-                    Text('arabic , english',style: TextStyle(fontSize: 24,fontFamily: 'inter'),),
+                    Text('Arabic , English',style: TextStyle(fontSize: 20,fontFamily: 'inter',fontWeight: FontWeight.bold),),
                     Spacer(flex: 2,),
                   ],
                 ),
                 SizedBox(height: 9,),
                 Row(
                   children: [
-                    Text('price / per hour :',style: TextStyle(fontSize: 24,fontFamily: 'inter'),),
+                    Text('Price / Per hour :',style: TextStyle(fontSize: 24,fontFamily: 'inter',fontWeight: FontWeight.bold),),
                     Spacer(flex: 1,),
-                    Text('35',style: TextStyle(fontSize: 24,fontFamily: 'inter'),),
+                    Text('35',style: TextStyle(fontSize: 20,fontFamily: 'inter',fontWeight: FontWeight.bold),),
                     Spacer(flex: 2,),
                   ],
                 ),
