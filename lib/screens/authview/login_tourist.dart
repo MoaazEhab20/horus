@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../components/customTextForm.dart';
 import '../../cubit/auth_cubit.dart';
+import '../../widgets/custom_bottom_bar.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -168,7 +169,7 @@ class LoginScreen extends StatelessWidget {
         if (state is LoginSuccess) {
           Navigator.pushReplacement(context, MaterialPageRoute(
             builder: (context) {
-              return HomeScreen();
+              return CustomBottomBar();
             },
           ));
         }else if (state is LoginFailed){
