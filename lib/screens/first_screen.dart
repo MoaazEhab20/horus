@@ -1,3 +1,4 @@
+import 'package:final_project/screens/authview/login_tourist.dart';
 import 'package:flutter/material.dart';
 
 import 'authview/signIn_tourguide_screen.dart';
@@ -57,7 +58,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SignInTourist()),
+                          builder: (context) => LoginScreen()),
                     );
                   },
                   shape: OutlineInputBorder(

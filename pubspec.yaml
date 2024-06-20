@@ -46,7 +46,11 @@ dependencies:
   dio: ^5.4.3+1
   flutter_bloc: ^8.1.6
   fluttertoast: ^8.2.5
+<<<<<<< HEAD
   url_launcher: ^6.1.14
+=======
+  flutter_verification_code: ^1.1.7
+>>>>>>> main
   
   
 
