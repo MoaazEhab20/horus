@@ -1,49 +1,60 @@
 import 'package:flutter/material.dart';
 
+import '../models/government_model.dart';
+
 class CustomGovernmentCard extends StatelessWidget {
+  final City city;
+
   const CustomGovernmentCard({
-    super.key,
-  });
+    Key? key,
+    required this.city,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {},
-      child: Stack(children: [
-        Container(
-          decoration: const BoxDecoration(
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/Egyptian Museum.jpg'),
+                image: NetworkImage(city.cityImg),
                 fit: BoxFit.cover,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(25))),
-        ),
-        Positioned(
-          right: 0,
-          left: 0,
-          bottom: 0,
-          child: Container(
-            height: 60,
-            decoration: const BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(25)),
+            ),
+          ),
+          Positioned(
+            right: 0,
+            left: 0,
+            bottom: 0,
+            child: Container(
+              height: 60,
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(221, 245, 145, 63),
                 borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25))),
-            child: Center(
-              child: Text(
-                'Cairo',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                  bottomLeft: Radius.circular(25),
+                  bottomRight: Radius.circular(25),
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  city.cityName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
                     color: Theme.of(context).primaryColorLight,
                     fontSize: 16,
                     fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }

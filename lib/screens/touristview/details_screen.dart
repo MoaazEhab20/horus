@@ -1,5 +1,6 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class detailsScreen extends StatelessWidget {
   const detailsScreen({super.key});
@@ -31,11 +32,28 @@ class detailsScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 6.0),
               child: Row(
                 children: [
-                  Icon(Icons.star_outlined),
-                  Icon(Icons.star_outlined),
-                  Icon(Icons.star_outlined),
-                  Icon(Icons.star_outlined),
-                  Icon(Icons.star_border),
+                  RatingBar(
+                    itemSize: 24,
+                    initialRating: 4,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    ratingWidget: RatingWidget(
+                      full: const Icon(
+                        Icons.star_rounded,
+                        color: Color(0xffF5903F),
+                      ),
+                      half: const Icon(
+                        Icons.star_half_rounded,
+                        color: Color(0xffF5903F),
+                      ),
+                      empty: const Icon(
+                        Icons.star_border_rounded,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    onRatingUpdate: (rating) {},
+                  ),
                   Spacer(),
                   DefaultText(
                     txt: '4.0',
