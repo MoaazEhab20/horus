@@ -36,6 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Column(
                   children: [
                     const SizedBox(height: 16),
@@ -188,7 +189,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            'Gender', // New field for Gender
+                            'Gender', 
                             style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontSize: 15,
@@ -210,6 +211,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                                       child: DropdownButtonHideUnderline(
                                         child: DropdownButton<String>(
+                                          dropdownColor: Theme.of(context).primaryColorLight,
                                           isExpanded: true,
                                           value: selectedGender,
                                           onChanged: (String? newValue) {
@@ -259,6 +261,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                                       child: DropdownButtonHideUnderline(
                                         child: DropdownButton<String>(
+                                          dropdownColor: Theme.of(context).primaryColorLight,
                                           isExpanded: true,
                                           value: selectedNationality,
                                           onChanged: (String? newValue) {
