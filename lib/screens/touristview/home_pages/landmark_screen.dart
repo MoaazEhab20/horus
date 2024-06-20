@@ -1,8 +1,9 @@
-import 'package:final_project/components/custom_text.dart';
+//import 'package:final_project/components/custom_text.dart';
 import 'package:flutter/material.dart';
 
-import '../../../widgets/custom_categoriespage_card.dart';
-import '../../../widgets/custom_search_field.dart';
+import '../../../models/landmark_model.dart';
+import '../../../services/landmark_services.dart';
+import '../../../widgets/custom_landmark_card.dart';
 
 class LandmarkScreen extends StatefulWidget {
   const LandmarkScreen({super.key});
@@ -12,6 +13,14 @@ class LandmarkScreen extends StatefulWidget {
 }
 
 class _LandmarkScreenState extends State<LandmarkScreen> {
+  late Future<List<Landmark>> _futureLandmark;
+  final LandmarkService _LandmarkService = LandmarkService();
+  @override
+  void initState() {
+    super.initState();
+    _futureLandmark = _LandmarkService.fetchLandmarkData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,24 +40,53 @@ class _LandmarkScreenState extends State<LandmarkScreen> {
             ),
           ),
         ),
-        title: TextForTitleL(
-          data: 'Choose Landmark',
+        title: Text(
+          'Choose Landmark',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            const SliverToBoxAdapter(
-              child: CustomSearchField(),
-            ),
-            SliverList(
-                delegate: SliverChildBuilderDelegate(childCount: 10,
-                    (context, index) {
-              return const CustomCategoriesPageCard();
-            }))
-          ],
+        child: FutureBuilder<List<Landmark>>(
+          future: _futureLandmark,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                  child: CircularProgressIndicator(
+                color: Color.fromARGB(221, 245, 145, 63),
+              ));
+            } else if (snapshot.hasError) {
+              return SliverToBoxAdapter(
+                child: Center(child: Text('Error: ${snapshot.error}')),
+              );
+            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              return const SliverToBoxAdapter(
+                child: Center(child: Text('No landmarks available')),
+              );
+            } else {
+              List<Landmark> landmarks = snapshot.data!;
+              return CustomScrollView(
+                physics: BouncingScrollPhysics(),
+                slivers: <Widget>[
+                  SliverPadding(
+                    padding: EdgeInsets.all(2.0),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          Landmark landmark = landmarks[index];
+                          return CustomLandmarkCard(landmark: landmark);
+                        },
+                        childCount: landmarks.length,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }
+          },
         ),
       ),
     );
