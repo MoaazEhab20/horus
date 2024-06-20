@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../components/customTextForm.dart';
 import '../../cubit/auth_cubit.dart';
 import '../../widgets/custom_bottom_bar.dart';
+import '../forgetPassword/email screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -29,6 +30,7 @@ class LoginScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Form(
                   key: formKey,
                   child: Column(
@@ -46,15 +48,16 @@ class LoginScreen extends StatelessWidget {
                             icon: const Icon(
                               Icons.arrow_circle_left_outlined,
                               size: 34,
-                            )),
+                            ),color: Theme.of(context).primaryColor,
+                            ),
                         const SizedBox(
                           height: 35,
                         ),
                         const Text(
                           'Sign in ',
                           style: TextStyle(
-                            fontSize: 64,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 60,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(
@@ -112,11 +115,13 @@ class LoginScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             GestureDetector(
-                              onTap: () {},
-                              child: const Text(
+                              onTap: () {
+                                Navigator.push(context,MaterialPageRoute(builder: (context) => EmailPage()));
+                              },
+                              child: Text(
                                 'Forget password ?',
                               style: TextStyle(
-                              color: Color(0XFF253544), fontSize: 13, height: 2),
+                              color: Theme.of(context).primaryColor, fontSize: 13, height: 2),
                               ),
                             ),
                           ],
@@ -141,13 +146,15 @@ class LoginScreen extends StatelessWidget {
                             child: Text(
                               state is LoginLoading ? 'Loading..' :
                               'Sign in',
+                              style: TextStyle(fontSize: 18),
                             ),
                           ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text('Don’t have an account?'),
                             TextButton(
-                              child: const Text('Sign up'),
+                              child: const Text('Sign up',style: TextStyle(color: const Color(0XFFF5903F)),),
                               onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(
                                   builder: (context) {
