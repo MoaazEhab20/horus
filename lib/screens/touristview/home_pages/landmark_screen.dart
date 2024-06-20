@@ -1,6 +1,7 @@
 //import 'package:final_project/components/custom_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../../components/custom_text.dart';
 import '../../../models/landmark_model.dart';
 import '../../../services/landmark_services.dart';
 import '../../../widgets/custom_landmark_card.dart';
@@ -40,13 +41,7 @@ class _LandmarkScreenState extends State<LandmarkScreen> {
             ),
           ),
         ),
-        title: Text(
-          'Choose Landmark',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: TextForTitleL(data: 'Choose Landmark'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
