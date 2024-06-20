@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
-import '../screens/touristview/details_screen.dart';
+import '../models/hotel_model.dart';
+import '../screens/touristview/profile_pages/hotels_details_screen.dart';
 
 class CustomHotelsCard extends StatelessWidget {
+  final Hotel hotel;
+
   const CustomHotelsCard({
-    super.key,
-  });
+    Key? key,
+    required this.hotel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-            Navigator.push(context,MaterialPageRoute(builder: (context) => const detailsScreen()));
-
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HotelsDetailsScreen(hotel: hotel),
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12),
@@ -31,16 +38,17 @@ class CustomHotelsCard extends StatelessWidget {
               top: 10,
               bottom: 10,
               left: 10,
-              //right: 60,
               child: Container(
                 width: 160,
-                //height: 175,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(24),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/hotels.webp'),
-                      fit: BoxFit.fill,
-                    )),
+                  borderRadius: BorderRadius.circular(24),
+                  image: DecorationImage(
+                    image: NetworkImage(hotel.images.isNotEmpty
+                        ? hotel.images[0].img
+                        : 'assets/images/hotels.webp'), // Use local image if network image is not available
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
             ),
             Positioned(
@@ -51,14 +59,15 @@ class CustomHotelsCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'InterContinental Citystars',
+                    hotel.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 19,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w500),
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 19,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 8, bottom: 8),
@@ -72,15 +81,18 @@ class CustomHotelsCard extends StatelessWidget {
                         SizedBox(
                           width: 2,
                         ),
-                        Text(
-                          'Nacr City , Cairo',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                        Flexible(
+                          child: Text(
+                            hotel.region,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontSize: 16,
                               fontFamily: 'Inter',
-                              fontWeight: FontWeight.w400),
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -90,10 +102,11 @@ class CustomHotelsCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        color: Color(0xffF5903F),
-                        fontSize: 16,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w400),
+                      color: Color(0xffF5903F),
+                      fontSize: 16,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                   SizedBox(
                     height: 10,
@@ -105,8 +118,9 @@ class CustomHotelsCard extends StatelessWidget {
               bottom: 10,
               right: 10,
               child: RatingBar(
+                ignoreGestures: true,
                 itemSize: 24,
-                initialRating: 3.5,
+                initialRating: hotel.rating,
                 direction: Axis.horizontal,
                 allowHalfRating: true,
                 itemCount: 5,
