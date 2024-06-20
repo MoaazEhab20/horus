@@ -39,13 +39,6 @@ void main() async {
     ),
   );
 }
-//bhhbbbbk
-//a7a
-//aaaaaaaaaa
-//zzzz
-//mmmmmmmmm
-//55555555
-//4444444
 
 class MyApp extends HookConsumerWidget {
   final bool onboarding;

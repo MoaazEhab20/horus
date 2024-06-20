@@ -1,8 +1,9 @@
 import 'package:final_project/components/custom_text.dart';
 import 'package:flutter/material.dart';
 
-import '../../../widgets/custom_categoriespage_card.dart';
+import '../../../widgets/custom_landmark_card.dart';
 import '../../../widgets/custom_search_field.dart';
+import '../../../widgets/custom_tourguide_card.dart';
 
 class EntertainmentScreen extends StatefulWidget {
   const EntertainmentScreen({super.key});
@@ -46,7 +47,7 @@ class _EntertainmentScreenState extends State<EntertainmentScreen> {
             SliverList(
                 delegate: SliverChildBuilderDelegate(childCount: 10,
                     (context, index) {
-              return const CustomCategoriesPageCard();
+              return const CustomTourguideCard();
             }))
           ],
         ),

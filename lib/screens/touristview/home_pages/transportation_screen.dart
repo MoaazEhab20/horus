@@ -1,7 +1,8 @@
 import 'package:final_project/components/custom_text.dart';
 import 'package:flutter/material.dart';
-import '../../../widgets/custom_categoriespage_card.dart';
+import '../../../widgets/custom_landmark_card.dart';
 import '../../../widgets/custom_search_field.dart';
+import '../../../widgets/custom_tourguide_card.dart';
 
 class TransportScreen extends StatefulWidget {
   const TransportScreen({super.key});
@@ -43,7 +44,7 @@ class _TransportScreenState extends State<TransportScreen> {
             SliverList(
                 delegate:
                     SliverChildBuilderDelegate(childCount: 3, (context, index) {
-              return const CustomCategoriesPageCard();
+              return const CustomTourguideCard();
             }))
           ],
         ),
