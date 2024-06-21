@@ -57,8 +57,10 @@ class _HotelsScreenState extends State<HotelsScreen> {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const SliverToBoxAdapter(
-                    child: Center(child: CircularProgressIndicator()),
-                  );
+                      child: Center(
+                          child: CircularProgressIndicator(
+                    color: Color.fromARGB(221, 245, 145, 63),
+                  )));
                 } else if (snapshot.hasError) {
                   return SliverToBoxAdapter(
                     child: Center(child: Text('Error: ${snapshot.error}')),
