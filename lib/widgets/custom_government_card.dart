@@ -15,17 +15,18 @@ class CustomGovernmentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacement<void, void>(
-          context,
-          MaterialPageRoute<void>(
-            builder: (BuildContext context) => const HomeScreen(),
-          ),
-        );
+        // Navigator.pushReplacement<void, void>(
+        //   context,
+        //   MaterialPageRoute<void>(
+        //     builder: (BuildContext context) => const HomeScreen(),
+        //   ),
+        // );
       },
       child: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
+              color: Theme.of(context).primaryColorLight,
               image: DecorationImage(
                 image: NetworkImage(city.cityImg),
                 fit: BoxFit.cover,

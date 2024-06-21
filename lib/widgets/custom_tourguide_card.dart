@@ -2,16 +2,26 @@ import 'package:final_project/screens/touristview/booking_pages/details_tourguid
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../models/tourguide_model.dart';
+
 class CustomTourguideCard extends StatelessWidget {
+  final TourGuide tourGuide;
+
   const CustomTourguideCard({
     super.key,
+    required this.tourGuide,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,MaterialPageRoute(builder: (context) => const detailsTourguide()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => detailsTourguide(
+                      tourGuide: tourGuide,
+                    )));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12),
@@ -35,9 +45,8 @@ class CustomTourguideCard extends StatelessWidget {
                 //height: 175,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
-                    image: const DecorationImage(
-                      image: AssetImage(
-                          'assets/images/Dave-Dickinson-Headshot.jpg'),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/adham.jpg'),
                       fit: BoxFit.fill,
                     )),
               ),
@@ -50,7 +59,7 @@ class CustomTourguideCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Moaaz Ehab',
+                    tourGuide.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -62,7 +71,9 @@ class CustomTourguideCard extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 8, bottom: 8),
                     child: Text(
-                      'English , Arabic',
+                      tourGuide.languages
+                          .map((language) => language.name)
+                          .join(', '),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -73,7 +84,7 @@ class CustomTourguideCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '35\$',
+                    '${tourGuide.price}\E£',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -92,8 +103,9 @@ class CustomTourguideCard extends StatelessWidget {
               bottom: 10,
               right: 10,
               child: RatingBar(
+                ignoreGestures: true,
                 itemSize: 24,
-                initialRating: 3.5,
+                initialRating: tourGuide.rate ?? 0.0,
                 direction: Axis.horizontal,
                 allowHalfRating: true,
                 itemCount: 5,

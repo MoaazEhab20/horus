@@ -32,43 +32,44 @@ class _VerificationScreenState extends State<VerificationScreen> {
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: [
-              const SizedBox(
-                height: 80,
+            const SizedBox(
+              height: 80,
+            ),
+            IconButton(
+              alignment: Alignment.centerLeft,
+              padding: const EdgeInsets.all(0),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_circle_left_outlined,
+                size: 34,
               ),
-              IconButton(
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.all(0),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Icons.arrow_circle_left_outlined,
-                    size: 34,
-                  ),
+              color: Theme.of(context).primaryColor,
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Text(
+              'Verify code',
+              style: TextStyle(
                   color: Theme.of(context).primaryColor,
-                  ),
-              const SizedBox(
-                height: 50,
-              ),
-               Text(
-                'Verify code',
-                style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 50,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: ''),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-               Text(
-                'Please enter the code we just sent to your email',
-                style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              Center(
+                  fontSize: 50,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: ''),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Please enter the code we just sent to your email',
+              style: TextStyle(
+                  color: Theme.of(context).primaryColor, fontSize: 20),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Center(
               child: VerificationCode(
                 length: 4,
                 onCompleted: (code) {
@@ -81,7 +82,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 },
               ),
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             TextButton(
               onPressed: () {
                 // Verify the code here
@@ -90,10 +93,15 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => NewPasswordScreen(),
-                      ),
-                    );
+                  ),
+                );
               },
-              child: Text("Verify"),
+              child: Text(
+                "Verify",
+                style: TextStyle(
+                  color: Color(0XFFF5903F),
+                ),
+              ),
             ),
           ],
         ),

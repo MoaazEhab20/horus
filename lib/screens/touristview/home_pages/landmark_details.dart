@@ -238,16 +238,22 @@ class Carousel extends StatelessWidget {
             ),
             Positioned(
               top: size.height * 0.01,
-              child: IconButton(
-                iconSize: 30,
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: Color(0xffF5903F),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
+              child: Container(
+                  width: 40,
+                  height: 37,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).primaryColorLight,
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Color(0xffF5903F),
+                    ),
+                  )),
             ),
             Positioned(
               top: size.height * 0.01,
@@ -257,7 +263,7 @@ class Carousel extends StatelessWidget {
                 height: 37,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColorLight,
                 ),
                 child: FavoriteIconButton(),
               ),
@@ -354,7 +360,7 @@ class OpeningDays extends StatelessWidget {
         Spacer(),
         DefaultText(
             txt:
-                '( ${openingH!.substring(0, 5)}AM -${clousingH!.substring(0, 5)}PM )',
+                '( ${openingH!.substring(0, 5)}AM - ${clousingH!.substring(0, 5)}PM )',
             size: 20)
       ],
     );

@@ -92,7 +92,9 @@ class HotelsDetailsScreen extends StatelessWidget {
                 onTap: () {
                   launchURL(hotel.location);
                 },
-                child: ClipRRect(borderRadius: BorderRadius.circular(29), child: Image.asset('assets/images/map.jpg')),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(29),
+                    child: Image.asset('assets/images/map.jpg')),
               ),
               SizedBox(height: 21),
               Padding(
@@ -129,7 +131,11 @@ class HotelsDetailsScreen extends StatelessWidget {
                             launchURL(hotel.bookings[index].bookingLink);
                           },
                           borderRadius: BorderRadius.circular(29),
-                          child: Image.network(hotel.bookings[index].bookingImage, height: 125, width: 125,),
+                          child: Image.network(
+                            hotel.bookings[index].bookingImage,
+                            height: 125,
+                            width: 125,
+                          ),
                         ),
                       );
                     }),
@@ -148,7 +154,8 @@ class Carousel extends StatelessWidget {
   final Hotel hotel;
   final Size size;
 
-  const Carousel({Key? key, required this.size, required this.hotel}) : super(key: key);
+  const Carousel({Key? key, required this.size, required this.hotel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -157,37 +164,54 @@ class Carousel extends StatelessWidget {
         borderRadius: BorderRadius.circular(29),
         child: Stack(
           children: [
-            Image.network(image.img, height: size.height, width: size.width, fit: BoxFit.cover,),
+            Image.network(
+              image.img,
+              height: size.height,
+              width: size.width,
+              fit: BoxFit.cover,
+            ),
             Positioned(
               top: size.height * 0.01,
               child: IconButton(
                 iconSize: 30,
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: Color(0xffF5903F),
-                ),
+                icon: Container(
+                    width: 40,
+                    height: 37,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).primaryColorLight,
+                    ),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Color(0xffF5903F),
+                      ),
+                    )),
                 onPressed: () {
                   Navigator.pop(context);
                 },
               ),
             ),
-            Positioned(
-              top: size.height * 0.01,
-              left: size.width * 0.8,
-              child: Container(
-                width: 40,
-                height: 37,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
-                child: IconButton(
-                  icon: Icon(Icons.favorite_border),
-                  color: Color(0xffF5903F),
-                  onPressed: () {},
-                ),
-              ),
-            )
+            // Positioned(
+            //   top: size.height * 0.01,
+            //   left: size.width * 0.8,
+            //   child: Container(
+            //     width: 40,
+            //     height: 37,
+            //     decoration: BoxDecoration(
+            //       shape: BoxShape.circle,
+            //       color: Colors.white,
+            //     ),
+            //     child: IconButton(
+            //       icon: Icon(Icons.favorite_border),
+            //       color: Color(0xffF5903F),
+            //       onPressed: () {},
+            //     ),
+            //   ),
+            // )
           ],
         ),
       );

@@ -44,7 +44,7 @@ class _TransportScreenState extends State<TransportScreen> {
             SliverList(
                 delegate:
                     SliverChildBuilderDelegate(childCount: 3, (context, index) {
-              return const CustomTourguideCard();
+              return;
             }))
           ],
         ),
