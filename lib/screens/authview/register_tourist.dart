@@ -6,7 +6,6 @@ import '../../components/nationalities.dart';
 import '../../cubit/auth_cubit.dart';
 import 'login_tourist.dart';
 
-
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -179,7 +178,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   return 'Password Mustn`t Be Empty';
                                 } else if (confirmpassword.text.length < 6) {
                                   return 'Password Must Be More Than 6 Digit ';
-                                } else if (confirmpassword.text != password.text) {
+                                } else if (confirmpassword.text !=
+                                    password.text) {
                                   return 'Passwords do not match';
                                 } else {
                                   return null;
@@ -189,7 +189,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            'Gender', 
+                            'Gender',
                             style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontSize: 15,
@@ -201,17 +201,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                border: Border.all(width: 1.0, color: Colors.grey),
+                                border:
+                                    Border.all(width: 1.0, color: Colors.grey),
                                 borderRadius: BorderRadius.circular(50.0),
                               ),
                               child: Row(
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12.0),
                                       child: DropdownButtonHideUnderline(
                                         child: DropdownButton<String>(
-                                          dropdownColor: Theme.of(context).primaryColorLight,
+                                          dropdownColor: Theme.of(context)
+                                              .primaryColorLight,
                                           isExpanded: true,
                                           value: selectedGender,
                                           onChanged: (String? newValue) {
@@ -219,7 +222,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                               selectedGender = newValue!;
                                             });
                                           },
-                                          items: ['Male', 'Female'].map((String gender) {
+                                          items: ['Male', 'Female']
+                                              .map((String gender) {
                                             return DropdownMenuItem<String>(
                                               value: gender,
                                               child: Text(
@@ -228,7 +232,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                               ),
                                             );
                                           }).toList(),
-                                          icon: const Icon(Icons.arrow_drop_down),
+                                          icon:
+                                              const Icon(Icons.arrow_drop_down),
                                         ),
                                       ),
                                     ),
@@ -251,17 +256,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                border: Border.all(width: 1.0, color: Colors.grey),
+                                border:
+                                    Border.all(width: 1.0, color: Colors.grey),
                                 borderRadius: BorderRadius.circular(50.0),
                               ),
                               child: Row(
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12.0),
                                       child: DropdownButtonHideUnderline(
                                         child: DropdownButton<String>(
-                                          dropdownColor: Theme.of(context).primaryColorLight,
+                                          dropdownColor: Theme.of(context)
+                                              .primaryColorLight,
                                           isExpanded: true,
                                           value: selectedNationality,
                                           onChanged: (String? newValue) {
@@ -269,7 +277,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                               selectedNationality = newValue!;
                                             });
                                           },
-                                          items: nationalities.map((String nationality) {
+                                          items: nationalities
+                                              .map((String nationality) {
                                             return DropdownMenuItem<String>(
                                               value: nationality,
                                               child: Text(
@@ -278,7 +287,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                               ),
                                             );
                                           }).toList(),
-                                          icon: const Icon(Icons.arrow_drop_down),
+                                          icon:
+                                              const Icon(Icons.arrow_drop_down),
                                         ),
                                       ),
                                     ),
@@ -320,6 +330,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('have an account?'),
+                        TextButton(
+                          child: const Text(
+                            'Sign in',
+                            style: TextStyle(color: const Color(0XFFF5903F)),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    )
                   ],
                 ),
               ),

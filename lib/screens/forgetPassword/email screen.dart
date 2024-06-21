@@ -27,21 +27,21 @@ class _EmailPageState extends State<EmailPage> {
                 height: 80,
               ),
               IconButton(
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.all(0),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(
-                    Icons.arrow_circle_left_outlined,
-                    size: 34,
-                  ),
-                  color: Theme.of(context).primaryColor,
-                  ),
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.all(0),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.arrow_circle_left_outlined,
+                  size: 34,
+                ),
+                color: Theme.of(context).primaryColor,
+              ),
               const SizedBox(
                 height: 35,
               ),
-               Text(
+              Text(
                 'Email Verification',
                 style: TextStyle(
                     color: Theme.of(context).primaryColor,
@@ -52,17 +52,20 @@ class _EmailPageState extends State<EmailPage> {
               const SizedBox(
                 height: 10,
               ),
-               Text(
+              Text(
                 'Fill your email to complete the process',
-                style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20),
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 20),
               ),
               const SizedBox(
                 height: 20,
               ),
-              const Text(
+              Text(
                 'Email',
                 style: TextStyle(
-                    color: Color(0XFF253544), fontSize: 15, height: 2),
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 15,
+                    height: 2),
               ),
               TextFormField(
                 validator: (data) {
@@ -110,8 +113,8 @@ class _EmailPageState extends State<EmailPage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => VerificationScreen(),
-                        ),
-                      );
+                      ),
+                    );
                   }
                 },
                 shape: OutlineInputBorder(

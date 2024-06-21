@@ -1,4 +1,5 @@
 class Landmark {
+  final int id;
   final String name;
   final String description;
   final double rating;
@@ -23,9 +24,11 @@ class Landmark {
   final double foreignTicket;
   final double foreignStudentTicket;
   final String region;
+  final int needTourguide;
   final List<Images> images;
 
   Landmark({
+    required this.id,
     required this.name,
     required this.description,
     required this.rating,
@@ -49,6 +52,7 @@ class Landmark {
     required this.foreignTicket,
     required this.foreignStudentTicket,
     required this.region,
+    required this.needTourguide,
     required this.images,
     required this.booking,
   });
@@ -58,6 +62,7 @@ class Landmark {
     List<Images> imageList =
         imagesFromJson.map((i) => Images.fromJson(i)).toList();
     return Landmark(
+      id: json['id'],
       name: json['name'],
       description: json['description'],
       rating: json['rating'].toDouble(),
@@ -81,6 +86,7 @@ class Landmark {
       foreignTicket: json['foreign_ticket'].toDouble(),
       foreignStudentTicket: json['foreign_student_ticket'].toDouble(),
       region: json['region'],
+      needTourguide: json['needTourguide'],
       images: imageList,
       booking: json['booking'],
     );

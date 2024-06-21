@@ -2,6 +2,8 @@ import 'package:final_project/components/custom_text.dart';
 import 'package:final_project/screens/touristview/home_pages/government_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/landmark_model.dart';
+import '../../services/recommended_services.dart';
 import '../../widgets/custom_categories_listview.dart';
 import '../../widgets/custom_recommend_listview.dart';
 import '../../widgets/custom_search_field.dart';
@@ -14,6 +16,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Future<List<Landmark>> _recommendedLandmarks;
+
+  @override
+  void initState() {
+    super.initState();
+    _recommendedLandmarks = RecommendedService().fetchRecommendedData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -184,7 +194,25 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  const CustomRecommendListView(),
+                  FutureBuilder<List<Landmark>>(
+                    future: _recommendedLandmarks,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                            child: CircularProgressIndicator(
+                          color: Color.fromARGB(221, 245, 145, 63),
+                        ));
+                      } else if (snapshot.hasError) {
+                        return Center(child: Text('Error: ${snapshot.error}'));
+                      } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                        return Center(
+                            child: Text('No recommendations available'));
+                      } else {
+                        return CustomRecommendListView(
+                            recommendations: snapshot.data!);
+                      }
+                    },
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Row(
@@ -205,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  const CustomRecommendListView(),
+                  //const CustomRecommendListView(),
                   const SizedBox(
                     height: 10,
                   )

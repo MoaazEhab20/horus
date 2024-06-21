@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../models/hotel_model.dart';
-import '../screens/touristview/profile_pages/hotels_details_screen.dart';
+import '../screens/touristview/home_pages/hotels_details.dart';
 
 class CustomHotelsCard extends StatelessWidget {
   final Hotel hotel;

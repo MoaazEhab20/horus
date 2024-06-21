@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-
+import '../models/landmark_model.dart';
 import 'custom_recommend_card.dart';
 
 class CustomRecommendListView extends StatelessWidget {
+  final List<Landmark> recommendations;
+
   const CustomRecommendListView({
+    required this.recommendations,
     super.key,
   });
 
@@ -12,11 +15,13 @@ class CustomRecommendListView extends StatelessWidget {
     return SizedBox(
       height: 225,
       child: ListView.builder(
-        itemCount: 6,
+        itemCount: recommendations.length,
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const CustomRecommendCard();
+          return CustomRecommendCard(
+            landmark: recommendations[index],
+          );
         },
       ),
     );
