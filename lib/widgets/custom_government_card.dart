@@ -1,3 +1,4 @@
+import 'package:final_project/screens/touristview/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../models/government_model.dart';
@@ -13,7 +14,14 @@ class CustomGovernmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushReplacement<void, void>(
+          context,
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => const HomeScreen(),
+          ),
+        );
+      },
       child: Stack(
         children: [
           Container(

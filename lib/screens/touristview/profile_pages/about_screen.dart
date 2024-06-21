@@ -72,7 +72,7 @@ class AboutScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: size.width*0.40,
+                  width: size.width * 0.40,
                   child: const Text(
                     'Our Greetings and foremost, we sincerely hope that the application has successfully garnered your utmost satisfaction.',
                     style: TextStyle(
@@ -85,12 +85,12 @@ class AboutScreen extends StatelessWidget {
                 ),
                 Image.asset(
                   'assets/images/giza.png',
-                  width: size.width*0.30,
-                  height: size.height*.30,
+                  width: size.width * 0.30,
+                  //height: size.height * .30,
                 ),
               ],
             ),
-            //const SizedBox(height: 10),
+            const SizedBox(height: 10),
             const Text(
               'Allow us to elucidate that this application was conceived as the graduation project at the Faculty of Computer Science. It served as a magnificent culmination of our academic journey. The underlying concept behind this app revolved around amalgamating all the splendid tourist destinations nestled within the land of Egypt. Our primary objective was to acquaint visitors and all people with these extraordinary locales while also streamlining their accessibility.',
               style: TextStyle(

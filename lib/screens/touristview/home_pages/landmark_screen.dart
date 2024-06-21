@@ -5,6 +5,7 @@ import '../../../components/custom_text.dart';
 import '../../../models/landmark_model.dart';
 import '../../../services/landmark_services.dart';
 import '../../../widgets/custom_landmark_card.dart';
+import '../../../widgets/custom_search_field.dart';
 
 class LandmarkScreen extends StatefulWidget {
   const LandmarkScreen({super.key});
@@ -66,6 +67,9 @@ class _LandmarkScreenState extends State<LandmarkScreen> {
               return CustomScrollView(
                 physics: BouncingScrollPhysics(),
                 slivers: <Widget>[
+                  SliverToBoxAdapter(
+                    child: CustomSearchField(),
+                  ),
                   SliverPadding(
                     padding: EdgeInsets.all(2.0),
                     sliver: SliverList(
