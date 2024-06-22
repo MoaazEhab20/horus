@@ -24,6 +24,9 @@ final class LoginSuccess extends RegisterTourGuideState {
 }
 
 final class LoginFailed extends RegisterTourGuideState {
+  final String message;
+
+  LoginFailed({required this.message});
 }
 
 

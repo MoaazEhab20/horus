@@ -2,8 +2,7 @@ import 'package:final_project/screens/authview/login_tourist.dart';
 import 'package:flutter/material.dart';
 
 import 'authview/loginTourguide.dart';
-import 'authview/signIn_tourguide_screen.dart';
-import 'authview/signIn_tourist_screen.dart';
+
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
