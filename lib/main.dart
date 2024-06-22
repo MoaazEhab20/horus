@@ -22,6 +22,7 @@ import 'package:final_project/theme/app_theme.dart';
 import 'package:final_project/theme/app_theme_state.dart';
 
 import 'cubit/auth_cubit.dart';
+import 'cubit/register_tour_guide__cubit.dart';
 
 int indexCity = 1;
 void main() async {
@@ -56,6 +57,7 @@ class MyApp extends HookConsumerWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context)=> RegisterTourGuideCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
