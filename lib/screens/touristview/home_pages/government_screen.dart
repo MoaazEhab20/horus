@@ -66,7 +66,10 @@ class _GovernmentScreenState extends State<GovernmentScreen> {
                 ),
                 itemCount: cities.length,
                 itemBuilder: (context, index) {
-                  return CustomGovernmentCard(city: cities[index]);
+                  return CustomGovernmentCard(
+                    city: cities[index],
+                    indexC: index,
+                  );
                 },
               );
             }
