@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 
+import '../main.dart';
 import '../models/landmark_model.dart';
 
 class EntertimentService {
   final Dio _dio = Dio();
   final String _endpoint =
-      'https://hoorus.online/api/read_landmark_type?city_id=2&tourism_type=Entertainment'; // Replace with the actual API endpoint
+      'https://hoorus.online/api/read_landmark_type?city_id=$indexCity&tourism_type=Entertainment'; // Replace with the actual API endpoint
 
   Future<List<Landmark>> fetchEntertimentData() async {
     try {

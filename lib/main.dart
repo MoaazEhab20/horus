@@ -23,10 +23,12 @@ import 'package:final_project/theme/app_theme_state.dart';
 
 import 'cubit/auth_cubit.dart';
 
+int indexCity = 1;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ApiService.init();
   final prefs = await SharedPreferences.getInstance();
+  indexCity = prefs.getInt('indexCity') ?? 1;
   final isDarkModeEnabled = prefs.getBool("isDarkModeEnabled") ?? false;
   final onboarding = prefs.getBool("onboarding") ?? false;
 
@@ -59,7 +61,8 @@ class MyApp extends HookConsumerWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        themeMode: appThemeState.isDarkModeEnabled ? ThemeMode.dark : ThemeMode.light,
+        themeMode:
+            appThemeState.isDarkModeEnabled ? ThemeMode.dark : ThemeMode.light,
         routes: {
           'HotelScreen': (context) => HotelsScreen(),
           'LandmarkScreen': (context) => LandmarkScreen(),
@@ -70,7 +73,8 @@ class MyApp extends HookConsumerWidget {
           'ProfileSettingScreen': (context) => ProfileSettingsScreen(),
           'AboutScreen': (context) => AboutScreen(),
           'TourguideAboutScreen': (context) => TourguideAboutScreen(),
-          'TourguideProfileSettingScreen': (context) => TourguideProfileSettingsScreen(),
+          'TourguideProfileSettingScreen': (context) =>
+              TourguideProfileSettingsScreen(),
         },
         home: onboarding ? FirstScreen() : OnboardinView(),
       ),

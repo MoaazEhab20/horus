@@ -1,26 +1,29 @@
-import 'package:final_project/screens/touristview/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../main.dart';
 import '../models/government_model.dart';
+import 'custom_government_choose_card.dart';
 
 class CustomGovernmentCard extends StatelessWidget {
   final City city;
+  final int indexC;
 
   const CustomGovernmentCard({
     Key? key,
     required this.city,
+    required this.indexC,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // Navigator.pushReplacement<void, void>(
-        //   context,
-        //   MaterialPageRoute<void>(
-        //     builder: (BuildContext context) => const HomeScreen(),
-        //   ),
-        // );
+      onTap: () async {
+        indexCity = indexC + 1;
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setInt('indexCity', indexCity);
+        Navigator.pop(context);
+        //return CustomGovernmentChooseCard();
       },
       child: Stack(
         children: [
