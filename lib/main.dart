@@ -1,4 +1,3 @@
-import 'package:final_project/screens/tourguideview/profile_pages/tourguide_about_screen.dart';
 import 'package:final_project/screens/touristview/profile_pages/profile_settings_screen.dart';
 import 'package:final_project/screens/touristview/profile_pages/setting_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:final_project/core/utils/api_service.dart';
 import 'package:final_project/screens/first_screen.dart';
 import 'package:final_project/screens/onboarding_view.dart';
-import 'package:final_project/screens/tourguideview/profile_pages/tourguide_profile_settings_screen.dart';
 import 'package:final_project/screens/touristview/home_pages/entertainment_screen.dart';
 import 'package:final_project/screens/touristview/home_pages/hotel_screen.dart';
 import 'package:final_project/screens/touristview/home_pages/landmark_screen.dart';
@@ -18,7 +16,6 @@ import 'package:final_project/screens/touristview/home_pages/tourguide_screen.da
 import 'package:final_project/screens/touristview/home_pages/transportation_screen.dart';
 import 'package:final_project/theme/app_theme.dart';
 import 'package:final_project/theme/app_theme_state.dart';
-
 import 'cubit/auth_cubit.dart';
 import 'cubit/register_tour_guide__cubit.dart';
 
@@ -72,9 +69,6 @@ class MyApp extends HookConsumerWidget {
           'SettingScreen': (context) => SettingScreen(),
           'ProfileSettingScreen': (context) => ProfileSettingsScreen(),
           'AboutScreen': (context) => AboutScreen(),
-          'TourguideAboutScreen': (context) => TourguideAboutScreen(),
-          'TourguideProfileSettingScreen': (context) =>
-              TourguideProfileSettingsScreen(),
         },
         home: onboarding ? FirstScreen() : OnboardinView(),
       ),
