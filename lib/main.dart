@@ -18,7 +18,6 @@ import 'package:final_project/screens/touristview/home_pages/tourguide_screen.da
 import 'package:final_project/screens/touristview/home_pages/transportation_screen.dart';
 import 'package:final_project/theme/app_theme.dart';
 import 'package:final_project/theme/app_theme_state.dart';
-
 import 'cubit/auth_cubit.dart';
 import 'cubit/register_tour_guide__cubit.dart';
 
