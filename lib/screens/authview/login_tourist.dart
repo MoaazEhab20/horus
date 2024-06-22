@@ -36,19 +36,20 @@ class LoginScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(
-                height: 80,
-              ),
+                          height: 80,
+                        ),
                         IconButton(
-                            alignment: Alignment.centerLeft,
-                            padding: const EdgeInsets.all(0),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(
-                              Icons.arrow_circle_left_outlined,
-                              size: 34,
-                            ),color: Theme.of(context).primaryColor,
-                            ),
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.all(0),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.arrow_circle_left_outlined,
+                            size: 34,
+                          ),
+                          color: Theme.of(context).primaryColor,
+                        ),
                         const SizedBox(
                           height: 35,
                         ),
@@ -65,12 +66,11 @@ class LoginScreen extends StatelessWidget {
                         const Text(
                           'Hi! 👋🏻 Welcome back, ',
                           style: TextStyle(fontSize: 20),
-                        ), 
+                        ),
                         const Text(
                           'you’ve been missed ',
                           style: TextStyle(fontSize: 20),
                         ),
-
                         const SizedBox(
                           height: 20,
                         ),
@@ -115,12 +115,17 @@ class LoginScreen extends StatelessWidget {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context,MaterialPageRoute(builder: (context) => EmailPage()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => EmailPage()));
                               },
                               child: Text(
                                 'Forget password ?',
-                              style: TextStyle(
-                              color: Theme.of(context).primaryColor, fontSize: 13, height: 2),
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontSize: 13,
+                                    height: 2),
                               ),
                             ),
                           ],
@@ -128,32 +133,35 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(
                           height: 50,
                         ),
-                          MaterialButton(
-                            minWidth: MediaQuery.of(context).size.width,
-                            height: 54,
-                            shape: OutlineInputBorder(
+                        MaterialButton(
+                          minWidth: MediaQuery.of(context).size.width,
+                          height: 54,
+                          shape: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(50),
                             borderSide: BorderSide.none,
-                           ),
-                            color: const Color(0XFFF5903F),
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {
-                                BlocProvider.of<AuthCubit>(context).Login(
-                                    email: email.text, password: password.text);
-                              }
-                            },
-                            child: Text(
-                              state is LoginLoading ? 'Loading..' :
-                              'Sign in',
-                              style: TextStyle(fontSize: 18),
-                            ),
                           ),
+                          color: const Color(0XFFF5903F),
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              BlocProvider.of<AuthCubit>(context).Login(
+                                  email: email.text, password: password.text);
+                            }
+                          },
+                          child: Text(
+                            state is LoginLoading ? 'Loading..' : 'Sign in',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text('Don’t have an account?'),
                             TextButton(
-                              child: const Text('Sign up',style: TextStyle(color: const Color(0XFFF5903F)),),
+                              child: const Text(
+                                'Sign up',
+                                style:
+                                    TextStyle(color: const Color(0XFFF5903F)),
+                              ),
                               onPressed: () {
                                 Navigator.push(context, MaterialPageRoute(
                                   builder: (context) {
@@ -178,17 +186,16 @@ class LoginScreen extends StatelessWidget {
               return CustomBottomBar();
             },
           ));
-        }else if (state is LoginFailed){
-           showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      backgroundColor: Colors.red,
-                      content: Text(state.message),
-                    );
-                  },
-                );
-      
+        } else if (state is LoginFailed) {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                backgroundColor: Colors.red,
+                content: Text(state.message),
+              );
+            },
+          );
         }
       },
     );
