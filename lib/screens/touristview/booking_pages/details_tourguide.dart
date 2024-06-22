@@ -54,23 +54,19 @@ class detailsTourguide extends StatelessWidget {
                           fontFamily: 'inter',
                           fontWeight: FontWeight.bold),
                     ),
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Text(
-                      tourGuide.name,
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'inter',
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Spacer(
-                      flex: 2,
-                    ),
+                    Spacer(flex:1),
                   ],
                 ),
+                SizedBox(height: 9,),
+                Text(
+                  tourGuide.name,
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'inter',
+                      fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
-                  height: 9,
+                  height: 12,
                 ),
                 Row(
                   children: [
@@ -81,25 +77,21 @@ class detailsTourguide extends StatelessWidget {
                           fontFamily: 'inter',
                           fontWeight: FontWeight.bold),
                     ),
-                    Spacer(
-                      flex: 1,
-                    ),
-                    Text(
-                      tourGuide.languages
-                          .map((language) => language.name)
-                          .join(', '),
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'inter',
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Spacer(
-                      flex: 2,
-                    ),
+                    Spacer(flex: 1,),
                   ],
                 ),
+                SizedBox(height: 9,),
+                Text(
+                  tourGuide.languages
+                      .map((language) => language.name)
+                      .join(', '),
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'inter',
+                      fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
-                  height: 9,
+                  height: 12,
                 ),
                 Row(
                   children: [
@@ -113,20 +105,18 @@ class detailsTourguide extends StatelessWidget {
                     Spacer(
                       flex: 1,
                     ),
-                    Text(
-                      '${tourGuide.price}\E£',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'inter',
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Spacer(
-                      flex: 2,
-                    ),
                   ],
                 ),
+                SizedBox(height: 9,),
+                Text(
+                  '${tourGuide.price}\E£',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'inter',
+                      fontWeight: FontWeight.bold),
+                ),
                 SizedBox(
-                  height: 140,
+                  height: 50,
                 ),
                 SizedBox(
                   width: double.infinity,
