@@ -1,6 +1,9 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
+import 'package:final_project/cubit/favorite/favorite_cubit.dart';
+import 'package:final_project/cubit/favorite/favorite_state.dart';
 import 'package:final_project/models/landmark_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -228,65 +231,71 @@ class Carousel extends StatelessWidget {
     List<Widget> imageWidgets = landmark.images.map((image) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(29),
-        child: Stack(
-          children: [
-            Image.network(
-              image.img,
-              height: size.height,
-              width: size.width,
-              fit: BoxFit.cover,
-            ),
-            Positioned(
-              top: size.height * 0.01,
-              child: Container(
-                  width: 40,
-                  height: 37,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Theme.of(context).primaryColorLight,
-                  ),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Color(0xffF5903F),
-                    ),
-                  )),
-            ),
-            Positioned(
-              top: size.height * 0.01,
-              left: size.width * 0.8,
-              child: Container(
-                width: 40,
-                height: 37,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context).primaryColorLight,
-                ),
-                child: FavoriteIconButton(),
-              ),
-            )
-          ],
+        child: Image.network(
+          image.img,
+          height: size.height,
+          width: size.width,
+          fit: BoxFit.cover,
         ),
       );
     }).toList();
 
-    return AnotherCarousel(
-      images: imageWidgets,
-      dotBgColor: Colors.transparent,
-      dotIncreasedColor: Color(0xffF5903F),
-      dotIncreaseSize: 1.2,
-      dotSpacing: 15,
-      dotSize: 8,
-      autoplay: true,
-      indicatorBgPadding: 7.0,
+    return Stack(
+      children: [
+        AnotherCarousel(
+          images: imageWidgets,
+          dotBgColor: Colors.transparent,
+          dotIncreasedColor: Color(0xffF5903F),
+          dotIncreaseSize: 1.2,
+          dotSpacing: 15,
+          dotSize: 8,
+          autoplay: true,
+          indicatorBgPadding: 7.0,
+        ),
+        Positioned(
+          top: size.height * 0.01,
+          left: 10,
+          child: Container(
+              width: 40,
+              height: 37,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context).primaryColorLight,
+              ),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Color(0xffF5903F),
+                ),
+              )),
+        ),
+        Positioned(
+          top: size.height * 0.01,
+          right: 10,
+          child: Container(
+            width: 40,
+            height: 37,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Theme.of(context).primaryColorLight,
+            ),
+            child: FavoriteIconButton(landmark: landmark,),
+          ),
+        ),
+      ],
     );
   }
 }
 
+
 class FavoriteIconButton extends StatefulWidget {
+  final Landmark landmark;
+
+  const FavoriteIconButton({super.key, required this.landmark});
+
   @override
   _FavoriteIconButtonState createState() => _FavoriteIconButtonState();
 }
@@ -294,20 +303,32 @@ class FavoriteIconButton extends StatefulWidget {
 class _FavoriteIconButtonState extends State<FavoriteIconButton> {
   bool isFavorite = false;
 
-  void _toggleFavorite() {
-    setState(() {
-      isFavorite = !isFavorite;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        isFavorite ? Icons.favorite : Icons.favorite_border,
+    return BlocProvider(
+      create: (context) => FavoriteCubit(),
+      child: BlocConsumer<FavoriteCubit,FavoritesStates>(
+        listener: (context, state) {}, 
+        builder: (context, state) => 
+         IconButton(
+          icon: Icon(
+            isFavorite ? Icons.favorite : Icons.favorite_border,
+          ),
+          color: Color(0xffF5903F),
+          onPressed: () {
+            setState(() {
+              isFavorite = !isFavorite;
+              print(isFavorite);
+              if(isFavorite == true) {
+                FavoriteCubit.get(context).addFavorites(tourist_id: '1', landmark_id: '${widget.landmark.id}');
+              }
+              else if(isFavorite == false) {
+                FavoriteCubit.get(context).removeFavorites(id: '${widget.landmark.id}');
+              }
+              });
+          },
+        ),
       ),
-      color: Color(0xffF5903F),
-      onPressed: _toggleFavorite,
     );
   }
 }
