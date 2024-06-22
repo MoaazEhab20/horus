@@ -1,4 +1,5 @@
 import 'package:final_project/components/custom_text.dart';
+import 'package:final_project/models/government_model.dart';
 import 'package:final_project/screens/touristview/home_pages/government_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,10 @@ import '../../widgets/custom_recommend_listview.dart';
 import '../../widgets/custom_search_field.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final String? cityName;
+  final String? cityCover;
+  const HomeScreen(
+      {super.key, @required this.cityName, @required this.cityCover});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -74,18 +78,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const GovernmentScreen()));
+                      Navigator.pushReplacement<void, void>(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              const GovernmentScreen(),
+                        ),
+                      );
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => const GovernmentScreen()));
                     },
                     child: Stack(children: [
                       Container(
                         width: double.infinity,
                         height: 195,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage('assets/images/cairo.jpg'),
+                              image: NetworkImage(widget.cityCover!),
                               fit: BoxFit.cover,
                             ),
                             borderRadius:
@@ -120,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   Text(
-                                    'Cairo',
+                                    widget.cityName!,
                                     style: TextStyle(
                                         color:
                                             Theme.of(context).primaryColorLight,
