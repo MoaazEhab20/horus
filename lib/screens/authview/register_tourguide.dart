@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../cubit/register_tour_guide__cubit.dart';
 
-
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
@@ -68,6 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
                   child: Form(
                     key: formKey,
                     child: Column(
@@ -119,9 +119,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             controller: name,
                             decoration: InputDecoration(
                               hintText: 'UserName',
+                              hintStyle: TextStyle(color: Colors.grey,fontSize: 18),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                  borderSide: const BorderSide(
+                                    width: 1,
+                                    color: Color(0XFFF5903F),
+                                  )),
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -146,9 +153,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             controller: email,
                             decoration: InputDecoration(
                               hintText: 'xxx@gmail.com',
+                              hintStyle: TextStyle(color: Colors.grey,fontSize: 18),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                  borderSide: const BorderSide(
+                                    width: 1,
+                                    color: Color(0XFFF5903F),
+                                  )),
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -174,9 +188,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                               hintText: '+20',
+                              hintStyle: TextStyle(color: Colors.grey,fontSize: 18),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                  borderSide: const BorderSide(
+                                    width: 1,
+                                    color: Color(0XFFF5903F),
+                                  )),
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -204,9 +225,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             obscureText: _obscurePassword,
                             decoration: InputDecoration(
                               hintText: '*******',
+                              hintStyle: TextStyle(color: Colors.grey,fontSize: 18),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                  borderSide: const BorderSide(
+                                    width: 1,
+                                    color: Color(0XFFF5903F),
+                                  )),
                               suffixIcon: IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -247,9 +275,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             obscureText: _obscureConfirmPassword,
                             decoration: InputDecoration(
                               hintText: '*******',
+                              hintStyle: TextStyle(color: Colors.grey,fontSize: 18),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                  borderSide: const BorderSide(
+                                    width: 1,
+                                    color: Color(0XFFF5903F),
+                                  )),
                               suffixIcon: IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -290,11 +325,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             controller: priceController,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              hintText: 'Enter price',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            ),
+                                hintText: 'Enter price',
+                                hintStyle: TextStyle(color: Colors.grey,fontSize: 18),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                    borderSide: const BorderSide(
+                                      width: 1,
+                                      color: Color(0XFFF5903F),
+                                    ))),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter a price';
@@ -315,9 +356,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: DropdownButtonFormField<String>(
+                            dropdownColor: Theme.of(context).primaryColorLight,
                             value: selectedGender,
-                            onChanged:
-(String? newValue) {
+                            onChanged: (String? newValue) {
                               setState(() {
                                 selectedGender = newValue;
                               });
@@ -337,6 +378,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                    borderSide: const BorderSide(
+                                      width: 1,
+                                      color: Color(0XFFF5903F),
+                                    ))
                             ),
                           ),
                         ),
@@ -354,11 +401,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: TextFormField(
                             controller: ssn,
                             decoration: InputDecoration(
-                              hintText: 'SSN',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            ),
+                                hintText: 'SSN',
+                                hintStyle: TextStyle(color: Colors.grey,fontSize: 18),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                    borderSide: const BorderSide(
+                                      width: 1,
+                                      color: Color(0XFFF5903F),
+                                    ))),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'SSN mustn\'t be empty';
@@ -379,6 +432,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: DropdownButtonFormField<int>(
+                            dropdownColor: Theme.of(context).primaryColorLight,
                             value: selectedCityId,
                             onChanged: (int? newValue) {
                               setState(() {
@@ -400,6 +454,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
+                              focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                    borderSide: const BorderSide(
+                                      width: 1,
+                                      color: Color(0XFFF5903F),
+                                    ))
                             ),
                           ),
                         ),
@@ -410,7 +470,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             borderSide: BorderSide.none,
                           ),
                           minWidth: double.infinity,
-                          color: const Color.fromARGB(255, 219, 219, 219),
+                          color: Theme.of(context).primaryColorLight,
                           onPressed: () {
                             RegisterTourGuideCubit.get(context)
                                 .openGallery(context);
@@ -441,6 +501,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                         ListView.builder(
+                          physics: BouncingScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: languages.length,
                           itemBuilder: (context, index) {
@@ -452,7 +513,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   color: Theme.of(context).primaryColor,
                                 ),
                               ),
-                              value: selectedLanguageIds.contains(language['id']),
+                              value:
+                                  selectedLanguageIds.contains(language['id']),
                               onChanged: (bool? value) {
                                 setState(() {
                                   if (value == true) {
@@ -505,6 +567,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ],
                         ),
+                        SizedBox(height: 20,),
+                        Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('have an account?'),
+                        TextButton(
+                          child: const Text(
+                            'Sign in',
+                            style: TextStyle(color: const Color(0XFFF5903F)),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        )
+                      ],
+                    ),
                         const SizedBox(height: 20),
                         if (state is RegisterTourguideLoading) ...[
                           const Center(child: CircularProgressIndicator()),
