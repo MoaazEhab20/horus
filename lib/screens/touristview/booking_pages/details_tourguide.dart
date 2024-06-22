@@ -27,7 +27,7 @@ class detailsTourguide extends StatelessWidget {
                       children: [
                         Stack(
                           children: [
-                            Image.asset('assets/images/adham.jpg'),
+                            Image.network(tourGuide.profilePic),
                             IconButton(
                               iconSize: 30,
                               icon: Icon(

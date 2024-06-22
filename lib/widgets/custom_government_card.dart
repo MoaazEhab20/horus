@@ -1,9 +1,11 @@
+import 'package:final_project/screens/touristview/home_screen.dart';
+import 'package:final_project/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
 import '../models/government_model.dart';
-
+import 'custom_recommend_listview.dart';
 
 class CustomGovernmentCard extends StatelessWidget {
   final City city;
@@ -22,8 +24,15 @@ class CustomGovernmentCard extends StatelessWidget {
         indexCity = indexC + 1;
         final prefs = await SharedPreferences.getInstance();
         await prefs.setInt('indexCity', indexCity);
-        Navigator.pop(context);
-        //return CustomGovernmentChooseCard();
+        //HomeScreen(city: city,);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => CustomBottomBar(
+              city: city,
+            ),
+          ),
+        );
       },
       child: Stack(
         children: [

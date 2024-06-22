@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../models/government_model.dart';
 import '../../../services/government_services.dart';
+import '../../../widgets/custom_bottom_bar.dart';
 import '../../../widgets/custom_government_card.dart';
 
 class GovernmentScreen extends StatefulWidget {
@@ -31,7 +32,12 @@ class _GovernmentScreenState extends State<GovernmentScreen> {
           padding: EdgeInsets.only(left: 25),
           child: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => CustomBottomBar(),
+                ),
+              );
             },
             iconSize: 32,
             icon: const Icon(Icons.arrow_circle_left_outlined),

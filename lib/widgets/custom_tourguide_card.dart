@@ -46,7 +46,7 @@ class CustomTourguideCard extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
                     image: DecorationImage(
-                      image: AssetImage('assets/images/adham.jpg'),
+                      image: NetworkImage(tourGuide.profilePic),
                       fit: BoxFit.fill,
                     )),
               ),
