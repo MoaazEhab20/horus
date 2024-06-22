@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,6 +13,8 @@ part 'register_tour_guide__state.dart';
 
 class RegisterTourGuideCubit extends Cubit<RegisterTourGuideState> {
   RegisterTourGuideCubit() : super(RegisterTourguideInitial());
+  
+  final Dio _dio = Dio();
 
   static RegisterTourGuideCubit get(context) => BlocProvider.of(context);
 
@@ -117,57 +120,33 @@ class RegisterTourGuideCubit extends Cubit<RegisterTourGuideState> {
     }
   }
 
-  void LoginTourguide({
-    required String password,
-    required String email,
-  }) async {
-    emit(RegisterTourguideLoading());
-    print(image);
-
+  void LoginTourguide({required String email, required String password}) async {
+    emit(LoginLoading());
     try {
-      Map<String, String> headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'lang': "en",
-      };
+      Response response = await _dio.post(
+        'https://hoorus.online/api/login',
+        data: {
+          "email": email,
+          "password": password,
+          "email_type": 1,
+        },
+        options: Options(
+          headers: {
+            "lang": "en",
+            "Accept": "application/json",
+          },
+        ),
+      );
 
-      Map<String, String> map = {
-        "password": password,
-        "email": email,
-      };
-
-      Uri uri = Uri.parse("https://hoorus.online/api/login");
-      var request = http.MultipartRequest('POST', uri);
-      request.headers.addAll(headers);
-      request.fields.addAll(map);
-
-      if (image != null && image!.isNotEmpty) {
-        request.files.add(await http.MultipartFile.fromPath('profile_pic', image!));
-      }
-
-      var streamedResponse = await request.send();
-      var response = await http.Response.fromStream(streamedResponse);
-      print('Response body: ${response.body}'); // Print the raw response body
-      print('Response status: ${response.statusCode}'); // Print the status code
-
-      var result;
-      try {
-        result = jsonDecode(response.body);
-      } catch (e) {
-        throw FormatException('Failed to decode JSON response');
-      }
-
-      if (response.statusCode >= 200 && response.statusCode < 300) {
-        print(result["message"]);
-        emit(RegisterTourguideSuccess());
+      var responseBody = response.data;
+      print('data${responseBody['user']}');
+      if (responseBody['message'] == 'Login success') {
+        emit(LoginSuccess());
       } else {
-        emit(RegisterTourguideFailed());
-        print(result["message"]);
-        print(result);
+        emit(LoginFailed(message: responseBody['message']));
       }
     } catch (e) {
-      print('Error: ${e.toString()}');
-      emit(RegisterTourguideFailed());
+      emit(LoginFailed(message: e.toString()));
     }
   }
 }

@@ -1,7 +1,7 @@
 import 'package:final_project/screens/touristview/home_pages/landmark_details.dart';
 import 'package:flutter/material.dart';
 import '../models/landmark_model.dart';
-import '../screens/touristview/details_screen.dart';
+
 
 class CustomRecommendCard extends StatelessWidget {
   final Landmark landmark;
