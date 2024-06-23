@@ -24,3 +24,25 @@ final class LoginFailed extends AuthState {
 
   LoginFailed({required this.message});
 }
+
+class UpdateNameInitialStates extends AuthState {}
+
+class UpdateNameSuccessStates extends AuthState {}
+
+class UpdateNameLoadingStates extends AuthState {}
+
+class UpdateNameErrorStates extends AuthState {}
+
+class BuyMoneyLoadingState extends AuthState {}
+
+class BuyMoneySuccessState extends AuthState {
+  final String message;
+
+  BuyMoneySuccessState({required this.message});
+}
+
+class BuyMoneyFauilreState extends AuthState {
+  final String error;
+
+  BuyMoneyFauilreState({required this.error});
+}

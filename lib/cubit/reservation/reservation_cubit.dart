@@ -3,6 +3,8 @@ import 'package:final_project/cubit/reservation/reservation_states.dart';
 import 'package:final_project/models/reservation_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../services/api_service.dart';
+
 class ReservationCubit extends Cubit<ReservationStates> {
   ReservationCubit() : super(ReservationInitialStates());
   static ReservationCubit get(context) => BlocProvider.of(context);
@@ -19,7 +21,7 @@ class ReservationCubit extends Cubit<ReservationStates> {
     required String day,
   }) {
     emit(ReservationLoadingStates());
-    ApiService.postData(
+    DioHelper.postData(
       url: 'https://hoorus.online/api/reservations',
       data: {
         'tourist_id': tourist_id,
@@ -44,7 +46,7 @@ class ReservationCubit extends Cubit<ReservationStates> {
     required int isAccepted,
   }) {
     emit(ApprovedReservationsLoadingStates());
-    ApiService.postData(
+    DioHelper.postData(
       url: 'https://hoorus.online/api/approval_reservation',
       data: {
         'id': reservation_id,
