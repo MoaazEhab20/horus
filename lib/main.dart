@@ -1,5 +1,6 @@
 import 'package:final_project/screens/touristview/profile_pages/profile_settings_screen.dart';
 import 'package:final_project/screens/touristview/profile_pages/setting_screen.dart';
+import 'package:final_project/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +23,7 @@ import 'cubit/register_tour_guide__cubit.dart';
 int indexCity = 1;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await ApiService.init();
+  await DioHelper.init();
   final prefs = await SharedPreferences.getInstance();
   indexCity = prefs.getInt('indexCity') ?? 1;
   final isDarkModeEnabled = prefs.getBool("isDarkModeEnabled") ?? false;

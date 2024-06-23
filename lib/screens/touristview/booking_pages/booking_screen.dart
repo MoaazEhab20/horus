@@ -1,3 +1,4 @@
+import 'package:final_project/screens/touristview/booking_pages/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -390,7 +391,7 @@ class _BookingTourguideState extends State<BookingTourguide> {
                               starting_time: fromTime.text.toString(),
                               finished_time: toTime.text.toString(),
                               day: date.text.toString());
-                          //Navigator.push(context, MaterialPageRoute(builder: (context) => const creditCard()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) =>  CustomCreditCard(id: '${3}',)));
                         }
                       },
                       style: ElevatedButton.styleFrom(

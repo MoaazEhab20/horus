@@ -3,6 +3,8 @@ import 'package:final_project/cubit/favorite/favorite_state.dart';
 import 'package:final_project/models/landmark_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../services/api_service.dart';
+
 class FavoriteCubit extends Cubit<FavoritesStates> {
   FavoriteCubit() : super(AddFavoritesInitialStates());
   static FavoriteCubit get(context) => BlocProvider.of(context);
@@ -14,7 +16,7 @@ class FavoriteCubit extends Cubit<FavoritesStates> {
     required String landmark_id,
   }) {
     emit(AddFavoritesLoadingStates());
-    ApiService.postData(
+    DioHelper.postData(
       url: 'https://hoorus.online/api/favorite_landmark',
       data: {
         'tourist_id': tourist_id,
@@ -33,7 +35,7 @@ class FavoriteCubit extends Cubit<FavoritesStates> {
     required String id,
   }) {
     emit(RemoveFavoritesLoadingStates());
-    ApiService.postData(
+    DioHelper.postData(
       url: 'https://hoorus.online/api/remove_favourite',
       data: {
         'id': id,
