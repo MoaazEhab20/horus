@@ -192,7 +192,7 @@ class LoginScreen extends StatelessWidget {
             builder: (context) {
               return AlertDialog(
                 backgroundColor: Colors.red,
-                content: Text("Email OR Password Error"),
+                content: Text("Email or Password Error"),
               );
             },
           );
