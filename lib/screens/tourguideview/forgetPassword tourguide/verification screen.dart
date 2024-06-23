@@ -3,18 +3,20 @@ import 'package:flutter_verification_code/flutter_verification_code.dart';
 
 import 'new password screen.dart';
 
-class VerificationScreen extends StatefulWidget {
+class VerificationScreenTourguide extends StatefulWidget {
   @override
   final String Email;
   final String Email_type;
 
-  const VerificationScreen(
+  const VerificationScreenTourguide(
       {super.key, required this.Email, required this.Email_type});
 
-  _VerificationScreenState createState() => _VerificationScreenState();
+  _VerificationScreenTourguideState createState() =>
+      _VerificationScreenTourguideState();
 }
 
-class _VerificationScreenState extends State<VerificationScreen> {
+class _VerificationScreenTourguideState
+    extends State<VerificationScreenTourguide> {
   String _verificationCode = "";
   var form_key = GlobalKey<FormState>();
   @override
@@ -87,7 +89,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => NewPasswordScreen(
+                        builder: (context) => NewPasswordScreenTourGuide(
                           email: widget.Email,
                           otp: _verificationCode,
                           email_type: widget.Email_type,

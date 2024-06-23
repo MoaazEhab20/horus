@@ -1,14 +1,10 @@
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
-import 'package:final_project/cubit/update_name_state.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:dio/dio.dart';
 
 import '../constant.dart';
-import '../core/utils/api_service.dart';
-import '../models/signup_model.dart';
 import '../services/api_service.dart';
 
 part 'auth_state.dart';
@@ -62,7 +58,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(RegisterFailed(message: e.toString()));
     }
   }
-  
+
   void Login({required String email, required String password}) async {
     emit(LoginLoading());
     try {
@@ -95,6 +91,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(LoginFailed(message: e.toString()));
     }
   }
+
   void updateNameProfile({
     required String email,
     required String email_type,
@@ -104,12 +101,11 @@ class AuthCubit extends Cubit<AuthState> {
     DioHelper.postData(
       url: 'https://hoorus.online/api/updateName',
       data: {
-        'email': loginEmail,
+        'email': email,
         'email_type': email_type,
-        'name': updateName,
+        'name': name,
       },
     ).then((value) {
-      loginName = updateName;
       print(value.data);
       emit(UpdateNameSuccessStates());
     }).catchError((error) {
@@ -117,6 +113,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(UpdateNameErrorStates());
     });
   }
+
   void PayMoney({
     required String card_name,
     required String card_number,
@@ -127,16 +124,15 @@ class AuthCubit extends Cubit<AuthState> {
   }) {
     emit(BuyMoneyLoadingState());
     DioHelper.postData(
-            url: 'https://hoorus.online/api/StripePayment/${id}',
-            data: {
-              'card_name': card_name,
-              'card_number': card_number,
-              'exp_month': exp_month,
-              'exp_year': exp_year,
-              'cvc': cvc,
-            },
-            )
-        .then((value) {
+      url: 'https://hoorus.online/api/StripePayment/${id}',
+      data: {
+        'card_name': card_name,
+        'card_number': card_number,
+        'exp_month': exp_month,
+        'exp_year': exp_year,
+        'cvc': cvc,
+      },
+    ).then((value) {
       if (value.statusCode! >= 200 && value.statusCode! < 300) {
         emit(BuyMoneySuccessState(message: value.data["message"]));
       } else {
@@ -153,6 +149,49 @@ class AuthCubit extends Cubit<AuthState> {
     }).catchError((error) {
       log(error.toString());
       emit(BuyMoneyFauilreState(error: error));
+    });
+  }
+
+  void ForgetPassword({
+    required String email,
+    required String email_type,
+  }) {
+    print(email);
+    emit(OtpLoadingState());
+    DioHelper.postData(
+      url: 'https://hoorus.online/api/checkEmailExists',
+      data: {'email': email, "email_type": email_type},
+    ).then((value) {
+      print(value.data);
+      print(value.statusCode);
+      emit(OtpSuccessState(message: value.data['message']));
+    }).catchError((error) {
+      emit(OtpFauilreState(error: error.toString()));
+    });
+  }
+
+  void UpdatePassword({
+    required String email,
+    required String email_type,
+    required String password,
+    required String cofirm_password,
+    required String otp,
+  }) {
+    emit(OtpLoadingState());
+    DioHelper.postData(
+      url: 'https://hoorus.online/api/verifyOtpAndUpdatePassword',
+      data: {
+        'email': email,
+        "email_type": email_type,
+        "password": password,
+        "password_confirmation": cofirm_password,
+        "otp": otp,
+      },
+    ).then((value) {
+      print(value.data);
+      emit(OtpSuccessState(message: value.data['message']));
+    }).catchError((error) {
+      emit(OtpFauilreState(error: error.toString()));
     });
   }
 }

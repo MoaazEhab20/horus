@@ -1,19 +1,18 @@
 import 'package:final_project/screens/authview/register_tourguide.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../components/customTextForm.dart';
 import '../../cubit/register_tour_guide__cubit.dart';
 import '../../widgets/custom_bottom_bar_tourguide.dart';
-import '../forgetPassword/email screen.dart';
+import '../tourguideview/forgetPassword tourguide/email screen.dart';
 
 class LoginScreenTourguide extends StatelessWidget {
   LoginScreenTourguide({super.key});
   final email = TextEditingController();
   final password = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,17 +43,21 @@ class LoginScreenTourguide extends StatelessWidget {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: const Icon(Icons.arrow_circle_left_outlined, size: 34),
+                          icon: const Icon(Icons.arrow_circle_left_outlined,
+                              size: 34),
                           color: Theme.of(context).primaryColor,
                         ),
                         const SizedBox(height: 35),
                         const Text(
                           'Sign in ',
-                          style: TextStyle(fontSize: 60, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                              fontSize: 60, fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: 10),
-                        const Text('Hi! 👋🏻 Welcome back, ', style: TextStyle(fontSize: 20)),
-                        const Text('you’ve been missed ', style: TextStyle(fontSize: 20)),
+                        const Text('Hi! 👋🏻 Welcome back, ',
+                            style: TextStyle(fontSize: 20)),
+                        const Text('you’ve been missed ',
+                            style: TextStyle(fontSize: 20)),
                         const SizedBox(height: 20),
                         const Text('Email'),
                         const SizedBox(height: 10),
@@ -95,7 +98,7 @@ class LoginScreenTourguide extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => EmailPage(),
+                                    builder: (context) => EmailPageTourguide(),
                                   ),
                                 );
                               },
@@ -121,8 +124,9 @@ class LoginScreenTourguide extends StatelessWidget {
                           color: const Color(0XFFF5903F),
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              BlocProvider.of<RegisterTourGuideCubit>(context).LoginTourguide(
-                                email: email.text, 
+                              BlocProvider.of<RegisterTourGuideCubit>(context)
+                                  .LoginTourguide(
+                                email: email.text,
                                 password: password.text,
                               );
                             }
@@ -175,7 +179,7 @@ class LoginScreenTourguide extends StatelessWidget {
             builder: (context) {
               return AlertDialog(
                 backgroundColor: Colors.red,
-                content: Text('Login Failed'),
+                content: Text('Email OR Password Error'),
               );
             },
           );

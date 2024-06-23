@@ -3,23 +3,23 @@ import 'package:final_project/screens/authview/login_tourist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../widgets/custom_flutter_toast.dart';
+import '../../../widgets/custom_flutter_toast.dart';
 
-class NewPasswordScreen extends StatefulWidget {
+class NewPasswordScreenTourGuide extends StatefulWidget {
   final String email;
   final String otp;
   final String email_type;
 
-  const NewPasswordScreen(
+  const NewPasswordScreenTourGuide(
       {super.key,
       required this.email,
       required this.otp,
       required this.email_type});
   @override
-  State<NewPasswordScreen> createState() => _NewPasswordScreenState();
+  State<NewPasswordScreenTourGuide> createState() => _NewPasswordScreenState();
 }
 
-class _NewPasswordScreenState extends State<NewPasswordScreen> {
+class _NewPasswordScreenState extends State<NewPasswordScreenTourGuide> {
   bool eyeIconPassword = true;
   bool eyeIconPasswordConfirm = true;
   TextEditingController password = TextEditingController();

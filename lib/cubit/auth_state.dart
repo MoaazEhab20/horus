@@ -46,3 +46,17 @@ class BuyMoneyFauilreState extends AuthState {
 
   BuyMoneyFauilreState({required this.error});
 }
+
+class OtpLoadingState extends AuthState {}
+
+class OtpSuccessState extends AuthState {
+  final String message;
+
+  OtpSuccessState({required this.message});
+}
+
+class OtpFauilreState extends AuthState {
+  final String error;
+
+  OtpFauilreState({required this.error});
+}

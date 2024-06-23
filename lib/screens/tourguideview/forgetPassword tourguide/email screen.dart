@@ -5,14 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'verification screen.dart';
 
-class EmailPage extends StatefulWidget {
-  EmailPage({super.key});
+class EmailPageTourguide extends StatefulWidget {
+  EmailPageTourguide({super.key});
 
   @override
-  State<EmailPage> createState() => _EmailPageState();
+  State<EmailPageTourguide> createState() => _EmailPageState();
 }
 
-class _EmailPageState extends State<EmailPage> {
+class _EmailPageState extends State<EmailPageTourguide> {
   TextEditingController email = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
 
@@ -24,6 +24,15 @@ class _EmailPageState extends State<EmailPage> {
         listener: (context, state) {
           if (state is OtpSuccessState) {
             showToast(text: state.message, color: Colors.green);
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => VerificationScreenTourguide(
+                  Email: email.text,
+                  Email_type: "1",
+                ),
+              ),
+            );
           } else if (state is OtpFauilreState) {
             showToast(text: state.error, color: Colors.red);
           }
@@ -124,16 +133,7 @@ class _EmailPageState extends State<EmailPage> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           AuthCubit.get(context).ForgetPassword(
-                              email: email.text, email_type: "0");
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => VerificationScreen(
-                                Email: email.text,
-                                Email_type: "0",
-                              ),
-                            ),
-                          );
+                              email: email.text, email_type: "1");
                         }
                       },
                       shape: OutlineInputBorder(
