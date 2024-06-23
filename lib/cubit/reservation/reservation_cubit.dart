@@ -42,8 +42,8 @@ class ReservationCubit extends Cubit<ReservationStates> {
   }
 
   void approvedReservations({
-    required int reservation_id,
-    required int isAccepted,
+    required String reservation_id,
+    required String isAccepted,
   }) {
     emit(ApprovedReservationsLoadingStates());
     DioHelper.postData(
