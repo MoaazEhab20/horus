@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import '../../models/reservation_model.dart';
+import '../../services/reservation_services.dart';
 import '../../widgets/custom_request_card.dart';
 
 class TourguideHomeScreen extends StatefulWidget {
@@ -10,6 +11,15 @@ class TourguideHomeScreen extends StatefulWidget {
 }
 
 class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
+  late Future<List<Reservation>> _futureReservations;
+  final ReservationService _reservationService = ReservationService();
+
+  @override
+  void initState() {
+    super.initState();
+    _futureReservations = _reservationService.fetchReservations();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +28,7 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
         title: Row(
           children: [
             Padding(
-              padding: EdgeInsets.only(right: 15, left: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: CircleAvatar(
                 radius: 26,
                 backgroundImage:
@@ -62,95 +72,127 @@ class _TourguideHomeScreenState extends State<TourguideHomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  Stack(children: [
-                    Container(
-                      width: double.infinity,
-                      height: 195,
-                      decoration: const BoxDecoration(
+                  const SizedBox(height: 15),
+                  Stack(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        height: 195,
+                        decoration: const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/images/cairo.jpg'),
                             fit: BoxFit.cover,
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(25))),
-                    ),
-                    Positioned(
-                      top: 135,
-                      left: 0,
-                      right: 0,
-                      child: Container(
-                        //width: 344,
-                        height: 60,
-                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(25)),
+                        ),
+                      ),
+                      Positioned(
+                        top: 135,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          height: 60,
+                          decoration: const BoxDecoration(
                             color: Color.fromARGB(221, 245, 145, 63),
                             borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(25),
-                                bottomRight: Radius.circular(25))),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 8, right: 4, top: 4),
-                                  child: Icon(
-                                    Icons.location_on_sharp,
-                                    color: Theme.of(context).primaryColorLight,
-                                    size: 22,
+                              bottomLeft: Radius.circular(25),
+                              bottomRight: Radius.circular(25),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8, right: 4, top: 4),
+                                    child: Icon(
+                                      Icons.location_on_sharp,
+                                      color:
+                                          Theme.of(context).primaryColorLight,
+                                      size: 22,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  'Cairo , Egypt',
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: TextStyle(
+                                  Text(
+                                    'Cairo , Egypt',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: TextStyle(
                                       color:
                                           Theme.of(context).primaryColorLight,
                                       fontSize: 18,
                                       fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 14.0),
-                              child: Text(
-                                'Current City',
-                                style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 14.0),
+                                child: Text(
+                                  'Current City',
+                                  style: TextStyle(
                                     color: Theme.of(context).primaryColorLight,
                                     fontSize: 16,
                                     fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
-                  Padding(
+                    ],
+                  ),
+                  const Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(
-                      'Requests ',
+                      'Requests',
                       style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontSize: 16,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w500),
+                        //color: Theme.of(context).primaryColor,
+                        fontSize: 16,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-            SliverList(
-                delegate: SliverChildBuilderDelegate(childCount: 10,
-                    (context, index) {
-              return const CustomRequestCard();
-            }))
+            FutureBuilder<List<Reservation>>(
+              future: _futureReservations,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const SliverToBoxAdapter(
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                } else if (snapshot.hasError) {
+                  return SliverToBoxAdapter(
+                    child: Center(child: Text('Error: ${snapshot.error}')),
+                  );
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const SliverToBoxAdapter(
+                    child: Center(child: Text('No reservations available')),
+                  );
+                } else {
+                  List<Reservation> reservations = snapshot.data!;
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        Reservation reservation = reservations[index];
+                        return CustomRequestCard(
+                          reservation: reservation,
+                        );
+                      },
+                      childCount: reservations.length,
+                    ),
+                  );
+                }
+              },
+            ),
           ],
         ),
       ),
